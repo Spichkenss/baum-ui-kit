@@ -1,0 +1,253 @@
+@use "/src/styles";
+
+// Миксин для размеров кнопки
+@mixin button-size($size) {
+  height: var(--button-height-#{$size});
+  border-radius: var(--button-radius-#{$size});
+  padding: var(--button-block-padding-#{$size}) var(--button-inline-padding-#{$size});
+}
+
+@mixin button-disabled-appearance($type) {
+  &[disabled] {
+    @include styles.inner-border(var(--button-#{$type}-border-color-disabled));
+
+    color: var(--button-#{$type}-text-color-disabled);
+    background: var(--button-#{$type}-background-disabled);
+    cursor: not-allowed;
+  }
+}
+
+// Миксин для негативного внешнего вида кнопки
+@mixin negative-button-appearance($type) {
+  @include button-disabled-appearance($type);
+  @include styles.inner-border(var(--button-#{$type}-negative-border-color));
+
+  background: var(--button-#{$type}-negative-background);
+  color: var(--button-#{$type}-negative-text-color);
+
+  &:not([disabled]):hover {
+    @include styles.inner-border(var(--button-#{$type}-negative-border-color-hovered));
+
+    color: var(--button-#{$type}-negative-text-color-hovered);
+    background: var(--button-#{$type}-negative-background-hovered);
+  }
+
+  &:not([disabled]):active {
+    @include styles.inner-border(var(--button-#{$type}-negative-border-color-pressed));
+
+    color: var(--button-#{$type}-negative-text-color-pressed);
+    background: var(--button-#{$type}-negative-background-pressed);
+  }
+}
+
+// Миксин для внешнего вида кнопки
+@mixin button-appearance($type) {
+  @include button-disabled-appearance($type);
+  @include styles.inner-border(var(--button-#{$type}-border-color));
+
+  background: var(--button-#{$type}-background);
+  color: var(--button-#{$type}-text-color);
+
+  &:not([disabled]):hover {
+    @include styles.inner-border(var(--button-#{$type}-border-color-hovered));
+
+    color: var(--button-#{$type}-text-color-hovered);
+    background: var(--button-#{$type}-background-hovered);
+  }
+
+  &:not([disabled]):active {
+    @include styles.inner-border(var(--button-#{$type}-border-color-pressed));
+
+    color: var(--button-#{$type}-text-color-pressed);
+    background: var(--button-#{$type}-background-pressed);
+  }
+}
+
+.Button__Root {
+  // Переменные
+  --button-inline-padding-sm: 14px;
+  --button-inline-padding-md: 16px;
+  --button-inline-padding-lg: 24px;
+
+  --button-block-padding-sm: 4px;
+  --button-block-padding-md: 10px;
+  --button-block-padding-lg: 14px;
+
+  --button-height-sm: 32px;
+  --button-height-md: 44px;
+  --button-height-lg: 56px;
+
+  --button-radius-sm: 6px;
+  --button-radius-md: 8px;
+  --button-radius-lg: 10px;
+
+  --button-inline-spacing: 4px;
+
+  // Normal
+  --button-primary-text-color: var(--palette-text-primary);
+  --button-primary-text-color-hovered: var(--palette-text-primary);
+  --button-primary-text-color-pressed: var(--palette-text-primary);
+  --button-primary-text-color-disabled: var(--palette-text-secondary);
+  --button-primary-background: var(--palette-primary);
+  --button-primary-background-hovered: var(--palette-primary-hover);
+  --button-primary-background-pressed: var(--palette-action-600);
+  --button-primary-background-disabled: var(--palette-neutral-200);
+
+  --button-secondary-text-color: var(--palette-primary);
+  --button-secondary-text-color-hovered: var(--palette-primary-hover);
+  --button-secondary-text-color-pressed: var(--palette-action-400);
+  --button-secondary-text-color-disabled: var(--palette-text-secondary);
+  --button-secondary-background: var(--palette-neutral-200);
+  --button-secondary-background-hovered: var(--palette-neutral-200);
+  --button-secondary-background-pressed: var(--palette-neutral-200);
+  --button-secondary-background-disabled: var(--palette-neutral-200);
+
+  --button-outline-text-color: var(--palette-primary);
+  --button-outline-text-color-hovered: var(--palette-primary-hover);
+  --button-outline-text-color-pressed: var(--palette-action-400);
+  --button-outline-text-color-disabled: var(--palette-text-secondary);
+  --button-outline-background: var(--palette-neutral-200);
+  --button-outline-background-hovered: var(--palette-neutral-200);
+  --button-outline-background-pressed: var(--palette-neutral-200);
+  --button-outline-background-disabled: var(--palette-neutral-200);
+  --button-outline-border-color: var(--palette-primary);
+  --button-outline-border-color-hovered: var(--palette-action-400);
+  --button-outline-border-color-pressed: var(--palette-action-400);
+  --button-outline-border-color-disabled: none;
+
+  --button-ghost-text-color: var(--palette-action-400);
+  --button-ghost-text-color-hovered: var(--palette-action-400);
+  --button-ghost-text-color-pressed: var(--palette-action-400);
+  --button-ghost-text-color-disabled: var(--palette-text-secondary);
+  --button-ghost-background: transparent;
+  --button-ghost-background-hovered: var(--palette-neutral-200);
+  --button-ghost-background-pressed: var(--palette-neutral-200);
+  --button-ghost-background-disabled: var(--palette-neutral-200);
+
+  --button-uncontained-text-color: var(--palette-primary);
+  --button-uncontained-text-color-hovered: var(--palette-primary-hover);
+  --button-uncontained-text-color-pressed: var(--palette-action-400);
+  --button-uncontained-text-color-disabled: var(--palette-text-secondary);
+  --button-uncontained-background: transparent;
+  --button-uncontained-background-hovered: transparent;
+  --button-uncontained-background-pressed: transparent;
+  --button-uncontained-background-disabled: transparent;
+
+  // Negative
+  --button-primary-negative-text-color: var(--palette-text-primary);
+  --button-primary-negative-text-color-hovered: var(--palette-text-primary);
+  --button-primary-negative-text-color-pressed: var(--palette-text-primary);
+  --button-primary-negative-background: var(--palette-negative-500);
+  --button-primary-negative-background-hovered: var(--palette-negative-600);
+  --button-primary-negative-background-pressed: var(--palette-negative-600);
+
+  --button-ghost-negative-text-color: var(--palette-negative-400);
+  --button-ghost-negative-text-color-hovered: var(--palette-negative-400);
+  --button-ghost-negative-text-color-pressed: var(--palette-negative-400);
+  --button-ghost-negative-text-color-disabled: var(--palette-text-secondary);
+  --button-ghost-negative-background: transparent;
+  --button-ghost-negative-background-hovered: var(--palette-negative-50);
+  --button-ghost-negative-background-pressed: var(--palette-negative-50);
+  --button-ghost-negative-background-disabled: var(--palette-neutral-200);
+
+  --button-uncontained-negative-text-color: var(--palette-negative-400);
+  --button-uncontained-negative-text-color-hovered: var(--palette-negative-300);
+  --button-uncontained-negative-text-color-pressed: var(--palette-negative-300);
+  --button-uncontained-negative-text-color-disabled: var(--palette-text-secondary);
+  --button-uncontained-negative-background: transparent;
+  --button-uncontained-negative-background-hovered: transparent;
+  --button-uncontained-negative-background-pressed: transparent;
+  --button-uncontained-negative-background-disabled: transparent;
+
+
+  // Общие стили
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  // Размеры кнопки
+  &.Size {
+    &-sm {
+      @include button-size(sm);
+
+      font: var(--font-body-500-bold);
+    }
+
+    &-md {
+      @include button-size(md);
+
+      font: var(--font-body-600-bold);
+    }
+
+    &-lg {
+      @include button-size(lg);
+
+      font: var(--font-body-600-bold);
+    }
+  }
+
+  // Внешний вид кнопки
+  &.Appearance {
+    &-primary {
+      @include button-appearance(primary);
+
+      &.Negative {
+        @include negative-button-appearance(primary);
+      }
+    }
+
+    &-secondary {
+      @include button-appearance(secondary);
+    }
+
+    &-outline {
+      @include button-appearance(outline);
+    }
+
+    &-ghost {
+      @include button-appearance(ghost);
+
+      &.Negative {
+        @include negative-button-appearance(ghost);
+      }
+    }
+
+    &-uncontained {
+      @include button-appearance(uncontained);
+
+      &.Negative {
+        @include negative-button-appearance(uncontained);
+      }
+
+      height: auto;
+      width: auto;
+      padding: 0;
+    }
+  }
+
+  .Button__Label {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: var(--button-inline-spacing);
+  }
+
+  .Button__Loader {
+    position: absolute;
+    inset-inline: 0;
+    display: none;
+  }
+
+  &[data-loading="true"] {
+    .Button__Label {
+      opacity: 0;
+    }
+
+    .Button__Loader {
+      display: unset;
+    }
+  }
+}

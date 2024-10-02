@@ -1,0 +1,106 @@
+:root {
+  --palette-background-primary: rgba(26, 27, 30, 1);
+  --palette-background-secondary: rgba(46, 48, 51, 1);
+
+  --palette-primary: rgba(0, 131, 253, 1);
+  --palette-primary-hover: rgba(10, 106, 194, 1);
+  --palette-primary-active: rgba(8, 79, 145, 1);
+  --palette-primary-opacity: rgba(0, 131, 253, 0.08);
+
+  --palette-black-primary: rgba(51, 51, 55, 1);
+  --palette-black-secondary: rgba(27, 27, 28, 1);
+
+  --palette-grey-primary: rgba(38, 38, 41, 1);
+  --palette-grey-hovered: rgba(45, 45, 48, 1);
+  --palette-grey-pressed: rgba(51, 51, 55, 1);
+
+  --palette-text-primary: rgba(250, 250, 250, 1);
+  --palette-text-secondary: rgba(112, 127, 141, 1);
+
+  --palette-neutral-600: rgba(32, 49, 72, 1);
+  --palette-neutral-500: rgba(84, 99, 120, 1);
+  --palette-neutral-400: rgba(112, 126, 144, 1);
+  --palette-neutral-300: rgba(97, 131, 162, 0.43);
+  --palette-neutral-200: rgba(97, 131, 162, 0.26);
+  --palette-neutral-100: rgba(97, 131, 162, 0.16);
+  --palette-neutral-50: rgba(97, 131, 162, 0.1);
+  --palette-neutral-100-opaque: rgba(230, 235, 240, 1);
+  --palette-neutral-50-opaque: rgba(240, 243, 246, 1);
+
+  --palette-action-600: rgba(0, 69, 189, 1);
+  --palette-action-500: rgba(0, 91, 255, 1);
+  --palette-action-400: rgba(47, 155, 249, 1);
+  --palette-action-300: rgba(92, 202, 250, 1);
+  --palette-action-100: rgba(47, 155, 249, 0.3);
+  --palette-action-50: rgba(47, 155, 249, 0.12);
+  --palette-action-25: rgba(47, 155, 249, 0.05);
+  --palette-action-100-opaque: rgba(193, 225, 254, 1);
+  --palette-action-50-opaque: rgba(230, 243, 254, 1);
+  --palette-action-25-opaque: rgba(244, 250, 254, 1);
+
+  --palette-success-600: rgba(11, 94, 31, 1);
+  --palette-success-500: rgba(0, 128, 40, 1);
+  --palette-success-400: rgba(29, 174, 64, 1);
+  --palette-success-300: rgba(52, 216, 101, 1);
+  --palette-success-200: rgba(29, 174, 64, 0.3);
+  --palette-success-100: rgba(29, 174, 64, 0.12);
+  --palette-success-50: rgba(29, 174, 64, 0.05);
+  --palette-success-100-opaque: rgba(188, 231, 198, 1);
+  --palette-success-50-opaque: rgba(227, 245, 232, 1);
+  --palette-success-25-opaque: rgba(243, 251, 245, 1);
+
+  --palette-alert-600: rgba(158, 0, 44, 1);
+  --palette-alert-500: rgba(211, 0, 61, 1);
+  --palette-alert-400: rgba(249, 97, 134, 1);
+  --palette-alert-300: rgba(255, 149, 184, 1);
+  --palette-alert-100: rgba(249, 97, 134, 0.3);
+  --palette-alert-50: rgba(249, 97, 134, 0.12);
+  --palette-alert-25: rgba(249, 97, 134, 0.05);
+  --palette-alert-100-opaque: rgba(254, 208, 219, 1);
+  --palette-alert-50-opaque: rgba(254, 236, 240, 1);
+  --palette-alert-25-opaque: rgba(254, 247, 249, 1);
+
+  --palette-warning-600: rgba(121, 70, 18, 1);
+  --palette-warning-500: rgba(166, 89, 26, 1);
+  --palette-warning-400: rgba(247, 178, 0, 1);
+  --palette-warning-300: rgba(255, 214, 44, 1);
+  --palette-warning-100: rgba(247, 178, 0, 0.3);
+  --palette-warning-50: rgba(247, 178, 0, 0.12);
+  --palette-warning-25: rgba(247, 178, 0, 0.05);
+  --palette-warning-100-opaque: rgba(253, 232, 179, 1);
+  --palette-warning-50-opaque: rgba(254, 245, 224, 1);
+  --palette-warning-25-opaque: rgba(254, 251, 242, 1);
+
+  --palette-negative-600: rgba(142, 46, 54, 1);
+  --palette-negative-500: rgba(232, 56, 39, 1);
+  --palette-negative-400: rgba(255, 121, 101, 1);
+  --palette-negative-300: rgba(252, 154, 131, 1);
+  --palette-negative-100: rgba(255, 121, 101, 0.3);
+  --palette-negative-50: rgba(255, 121, 101, 0.12);
+  --palette-negative-25: rgba(255, 121, 101, 0.05);
+  --palette-negative-100-opaque: rgba(255, 215, 209, 1);
+  --palette-negative-50-opaque: rgba(255, 239, 236, 1);
+  --palette-negative-25-opaque: rgba(255, 248, 247, 1);
+
+  --palette-info-600: rgba(21, 90, 105, 1);
+  --palette-info-500: rgba(0, 122, 145, 1);
+  --palette-info-400: rgba(6, 167, 187, 1);
+  --palette-info-300: rgba(79, 206, 228, 1);
+  --palette-info-100: rgba(6, 167, 187, 0.3);
+  --palette-info-50: rgba(6, 167, 187, 0.12);
+  --palette-info-25: rgba(6, 167, 187, 0.05);
+  --palette-info-100-opaque: rgba(181, 229, 235, 1);
+  --palette-info-50-opaque: rgba(225, 244, 246, 1);
+  --palette-info-25-opaque: rgba(242, 250, 251, 1);
+
+  --palette-pro-600: rgba(78, 27, 217, 1);
+  --palette-pro-500: rgba(105, 78, 251, 1);
+  --palette-pro-400: rgba(141, 139, 255, 1);
+  --palette-pro-300: rgba(177, 185, 255, 1);
+  --palette-pro-100: rgba(141, 139, 255, 0.3);
+  --palette-pro-50: rgba(141, 139, 255, 0.12);
+  --palette-pro-25: rgba(141, 139, 255, 0.05);
+  --palette-pro-100-opaque: rgba(221, 221, 255, 1);
+  --palette-pro-50-opaque: rgba(241, 241, 255, 1);
+  --palette-pro-25-opaque: rgba(249, 249, 255, 1);
+}
