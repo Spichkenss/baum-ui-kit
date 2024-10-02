@@ -1,15 +1,18 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
-import {appearenceStyles, Button, ButtonProps, sizeStyles} from './button.component';
+import {Button, ButtonProps} from './button.component';
+import {buttonAppearenceStyles, buttonSizeStyles} from "./button.consts.ts";
+import {disabledArg} from "../../lib";
+import {primitiveArgs} from "../../lib/consts/storybook.consts.ts";
+import {FullWidthDecorator} from "../../lib/decorators/full-width.decorator.tsx";
 
 const meta = {
-    title: 'Components/Button',
+    title: 'UI/Button',
     component: Button,
-    parameters: {
-        layout: 'centered',
-    },
     tags: ['autodocs'],
+    decorators: [FullWidthDecorator],
     argTypes: {
+        ...primitiveArgs,
         negative: {
             control: 'boolean',
             table: {
@@ -18,16 +21,8 @@ const meta = {
                 },
             }
         },
-        before: {
-            table: {
-                disable: true,
-            }
-        },
-        after: {
-            table: {
-                disable: true,
-            }
-        },
+        before: disabledArg,
+        after: disabledArg,
         children: {
             control: 'text',
         },
@@ -50,7 +45,7 @@ const meta = {
         size: {
             control: 'radio',
             description: "Максимальная высота кнопки",
-            options: Object.keys(sizeStyles),
+            options: Object.keys(buttonSizeStyles),
             table: {
                 type: {
                     summary: 'union',
@@ -63,7 +58,7 @@ const meta = {
         appearance: {
             control: 'radio',
             description: "Внешний вид кнопки",
-            options: Object.keys(appearenceStyles),
+            options: Object.keys(buttonAppearenceStyles),
             table: {
                 type: {
                     summary: 'union',
@@ -87,6 +82,7 @@ const defaultArgs: ButtonProps = {
     disabled: false,
     isLoading: false,
     negative: false,
+    fullWidth: false,
 }
 
 export const Primary: Story = {
@@ -162,5 +158,12 @@ export const Large: Story = {
     args: {
         ...defaultArgs,
         size: 'lg',
+    },
+};
+
+export const FullWidth: Story = {
+    args: {
+        ...defaultArgs,
+        fullWidth: true,
     },
 };

@@ -1,16 +1,20 @@
-import {type ComponentPropsWithoutRef, forwardRef, ReactNode} from "react";
+import {type ComponentPropsWithoutRef, forwardRef} from "react";
 import styles from './button.module.scss';
-import {classnames} from "../../lib/classnames.ts";
-import {ButtonAppearance, ButtonSize, appearenceStyles, sizeStyles} from "./button.consts.ts";
+import {classnames} from "../../lib";
+import {ButtonAppearance, ButtonSize, buttonAppearenceStyles, buttonSizeStyles} from "./button.consts.ts";
+import {WithAfterComponent, WithBeforeComponent} from "../../lib/types/common.types.ts";
+import {PrimitiveComponent, PrimitiveProps} from "../PrimitiveComponent";
 
-type ButtonProps = ComponentPropsWithoutRef<'button'> & {
-    size?: ButtonSize;
-    appearance?: ButtonAppearance;
-    isLoading?: boolean;
-    before?: ReactNode;
-    after?: ReactNode;
-    negative?: boolean;
-};
+type ButtonProps = ComponentPropsWithoutRef<'button'>
+    & WithBeforeComponent
+    & WithAfterComponent
+    & PrimitiveProps
+    & {
+        size?: ButtonSize;
+        appearance?: ButtonAppearance;
+        isLoading?: boolean;
+        negative?: boolean;
+    };
 
 const Button = forwardRef<
     HTMLButtonElement,
@@ -29,12 +33,13 @@ const Button = forwardRef<
    }, ref) => {
 
     return (
-        <button
+        <PrimitiveComponent
+            as={'button'}
             ref={ref}
             className={classnames(
                 styles['Button__Root'],
-                sizeStyles[size],
-                appearenceStyles[appearance],
+                buttonSizeStyles[size],
+                buttonAppearenceStyles[appearance],
                 {
                     [styles['Negative']]: negative
                 },
@@ -55,7 +60,7 @@ const Button = forwardRef<
                 <span>{children}</span>
                 <span className={styles['Button__Label__After']}>{after}</span>
             </span>
-        </button>
+        </PrimitiveComponent>
     );
 });
 

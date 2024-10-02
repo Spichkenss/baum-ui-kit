@@ -1,0 +1,90 @@
+@use "/src/styles";
+
+@mixin control-appearance($type) {
+  @include styles.inner-border(var(--control-#{$type}-border-color));
+
+  color: var(--control-#{$type}-text-color);
+  background: var(--control-#{$type}-background);
+
+  & > * {
+    color: var(--control-#{$type}-text-color);
+  }
+}
+
+@mixin control-size($size) {
+  border-radius: var(--control-border-radius-#{$size});
+  height: var(--control-height-#{$size});
+}
+
+.Control__Root {
+  --control-placeholder-color: var(--palette-text-secondary);
+  --control-active-border-color: var(--palette-primary);
+
+  --control-default-text-color: var(--palette-text-primary);
+  --control-default-background: var(--palette-grey-primary);
+
+  --control-error-text-color: var(--palette-negative-400);
+  --control-error-background: var(--palette-negative-50);
+  --control-error-border-color: var(--palette-negative-100);
+
+  --control-warning-text-color: var(--palette-warning-400);
+  --control-warning-background: var(--palette-warning-50);
+  --control-warning-border-color: var(--palette-warning-100);
+
+  --control-success-text-color: var(--palette-success-400);
+  --control-success-background: var(--palette-success-50);
+  --control-success-border-color: var(--palette-success-100);
+
+  --control-block-spacing: 4px;
+  --control-inline-spacing: 8px;
+
+  --control-border-radius-sm: 6px;
+  --control-border-radius-md: 8px;
+  --control-border-radius-lg: 10px;
+
+  --control-height-sm: 32px;
+  --control-height-md: 44px;
+  --control-height-lg: 56px;
+
+  padding: var(--control-block-spacing) var(--control-inline-spacing);
+
+  &:has(input:placeholder-shown) {
+    color: var(--control-default-placeholder-color);
+  }
+
+  &:has(input:focus) {
+    @include styles.inner-border(var(--control-active-border-color));
+  }
+
+  &.Status {
+    &-default {
+      @include control-appearance(default);
+    }
+
+    &-error {
+      @include control-appearance(error);
+    }
+
+    &-warning {
+      @include control-appearance(warning);
+    }
+
+    &-success {
+      @include control-appearance(success);
+    }
+  }
+
+  &.Size {
+    &-sm {
+      @include control-size(sm);
+    }
+
+    &-md {
+      @include control-size(md);
+    }
+
+    &-lg {
+      @include control-size(lg);
+    }
+  }
+}

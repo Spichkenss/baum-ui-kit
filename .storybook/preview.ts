@@ -3,12 +3,13 @@ import "../src/styles/index.scss"
 
 const preview: Preview = {
     parameters: {
+        layout: 'padded',
         backgrounds: {
             values: [
-                {name: 'Dark', value: '#1b1c1d'},
+                {name: 'Dark', value: '#1A1B1EFF'},
                 {name: 'Light', value: '#FFF'},
             ],
-            default: 'Dark',
+            default: 'Light',
         },
         controls: {
             matchers: {

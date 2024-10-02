@@ -1,12 +1,12 @@
 import styles from "./button.module.scss";
 
-const sizeStyles = {
+const buttonSizeStyles = {
     sm: styles['Size-sm'],
     md: styles['Size-md'],
     lg: styles['Size-lg'],
 } as const;
 
-const appearenceStyles = {
+const buttonAppearenceStyles = {
     primary: styles['Appearance-primary'],
     secondary: styles['Appearance-secondary'],
     outline: styles['Appearance-outline'],
@@ -14,8 +14,8 @@ const appearenceStyles = {
     uncontained: styles['Appearance-uncontained'],
 } as const;
 
-type ButtonSize = keyof typeof sizeStyles;
-type ButtonAppearance = keyof typeof appearenceStyles;
+type ButtonSize = keyof typeof buttonSizeStyles;
+type ButtonAppearance = keyof typeof buttonAppearenceStyles;
 
-export {sizeStyles, appearenceStyles}
+export {buttonSizeStyles, buttonAppearenceStyles}
 export type {ButtonSize, ButtonAppearance};
