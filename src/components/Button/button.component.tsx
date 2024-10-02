@@ -1,24 +1,11 @@
 import {type ComponentPropsWithoutRef, forwardRef, ReactNode} from "react";
 import styles from './button.module.scss';
 import {classnames} from "../../lib/classnames.ts";
-
-const sizeStyles = {
-    sm: styles['Size-sm'],
-    md: styles['Size-md'],
-    lg: styles['Size-lg'],
-} as const;
-
-const appearenceStyles = {
-    primary: styles['Appearance-primary'],
-    secondary: styles['Appearance-secondary'],
-    outline: styles['Appearance-outline'],
-    ghost: styles['Appearance-ghost'],
-    uncontained: styles['Appearance-uncontained'],
-} as const;
+import {ButtonAppearance, ButtonSize, appearenceStyles, sizeStyles} from "./button.consts.ts";
 
 type ButtonProps = ComponentPropsWithoutRef<'button'> & {
-    size?: keyof typeof sizeStyles;
-    appearance?: keyof typeof appearenceStyles;
+    size?: ButtonSize;
+    appearance?: ButtonAppearance;
     isLoading?: boolean;
     before?: ReactNode;
     after?: ReactNode;
@@ -74,5 +61,5 @@ const Button = forwardRef<
 
 Button.displayName = 'Button';
 
-export {Button, sizeStyles, appearenceStyles};
+export {Button};
 export type {ButtonProps};
