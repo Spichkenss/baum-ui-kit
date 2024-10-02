@@ -32,7 +32,7 @@ const Button = forwardRef<
        className,
        size = 'md',
        appearance = 'primary',
-       disabled,
+       disabled = false,
        isLoading = false,
        children,
        before,

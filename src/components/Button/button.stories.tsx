@@ -12,6 +12,11 @@ const meta = {
     argTypes: {
         negative: {
             control: 'boolean',
+            table: {
+                type: {
+                    summary: 'boolean',
+                },
+            }
         },
         before: {
             table: {
@@ -28,9 +33,19 @@ const meta = {
         },
         isLoading: {
             control: 'boolean',
+            table: {
+                type: {
+                    summary: 'boolean',
+                },
+            }
         },
         disabled: {
-            control: 'boolean'
+            control: 'boolean',
+            table: {
+                type: {
+                    summary: 'boolean',
+                },
+            }
         },
         size: {
             control: 'radio',
@@ -71,7 +86,6 @@ const defaultArgs: ButtonProps = {
     appearance: "primary",
     disabled: false,
     isLoading: false,
-    before: <div>+</div>,
     negative: false,
 }
 
@@ -104,6 +118,29 @@ export const Uncontained: Story = {
     args: {
         ...defaultArgs,
         appearance: 'uncontained',
+    },
+};
+
+export const PrimaryNegative: Story = {
+    args: {
+        ...defaultArgs,
+        negative: true,
+    }
+};
+
+export const GhostNegative: Story = {
+    args: {
+        ...defaultArgs,
+        appearance: 'ghost',
+        negative: true,
+    },
+};
+
+export const UncontainedNegative: Story = {
+    args: {
+        ...defaultArgs,
+        appearance: 'uncontained',
+        negative: true,
     },
 };
 
