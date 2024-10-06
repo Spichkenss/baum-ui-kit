@@ -1,5 +1,5 @@
-import {ArgTypes} from "@storybook/react";
-import {PrimitiveProps} from "../../components/PrimitiveComponent";
+import { ArgTypes } from "@storybook/react";
+import { PrimitiveProps } from "../../components/PrimitiveComponent";
 
 export const disabledArg = {
     table: {
@@ -9,6 +9,6 @@ export const disabledArg = {
 
 export const primitiveArgs: ArgTypes<PrimitiveProps> = {
     fullWidth: {
-        control: 'boolean',
+        control: "boolean",
     }
 }

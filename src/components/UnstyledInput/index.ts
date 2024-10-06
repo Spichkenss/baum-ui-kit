@@ -1,1 +1,4 @@
-export {UnstyledInput, type UnstyledInputProps} from './unstyled-input.component'
+export {
+    UnstyledInput,
+    type UnstyledInputProps
+} from "./unstyled-input.component"

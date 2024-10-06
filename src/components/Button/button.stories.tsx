@@ -1,70 +1,72 @@
-import type {Meta, StoryObj} from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import {Button, ButtonProps} from './button.component';
-import {buttonAppearenceStyles, buttonSizeStyles} from "./button.consts.ts";
-import {disabledArg} from "../../lib";
-import {primitiveArgs} from "../../lib/consts/storybook.consts.ts";
-import {FullWidthDecorator} from "../../lib/decorators/full-width.decorator.tsx";
+import { Button, ButtonProps } from "./button.component";
+import { buttonAppearenceStyles, buttonSizeStyles } from "./button.consts.ts";
+import { disabledArg } from "../../lib";
+import { primitiveArgs } from "../../lib/consts/storybook.consts.ts";
+import {
+    FullWidthDecorator
+} from "../../lib/decorators/full-width.decorator.tsx";
 
 const meta = {
-    title: 'UI/Button',
+    title: "UI/Button",
     component: Button,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     decorators: [FullWidthDecorator],
     argTypes: {
         ...primitiveArgs,
         negative: {
-            control: 'boolean',
+            control: "boolean",
             table: {
                 type: {
-                    summary: 'boolean',
+                    summary: "boolean",
                 },
             }
         },
         before: disabledArg,
         after: disabledArg,
         children: {
-            control: 'text',
+            control: "text",
         },
         isLoading: {
-            control: 'boolean',
+            control: "boolean",
             table: {
                 type: {
-                    summary: 'boolean',
+                    summary: "boolean",
                 },
             }
         },
         disabled: {
-            control: 'boolean',
+            control: "boolean",
             table: {
                 type: {
-                    summary: 'boolean',
+                    summary: "boolean",
                 },
             }
         },
         size: {
-            control: 'radio',
+            control: "radio",
             description: "Максимальная высота кнопки",
             options: Object.keys(buttonSizeStyles),
             table: {
                 type: {
-                    summary: 'union',
+                    summary: "union",
                 },
                 defaultValue: {
-                    summary: 'md'
+                    summary: "md"
                 },
             }
         },
         appearance: {
-            control: 'radio',
+            control: "radio",
             description: "Внешний вид кнопки",
             options: Object.keys(buttonAppearenceStyles),
             table: {
                 type: {
-                    summary: 'union',
+                    summary: "union",
                 },
                 defaultValue: {
-                    summary: 'primary'
+                    summary: "primary"
                 },
             }
         }
@@ -92,28 +94,28 @@ export const Primary: Story = {
 export const Secondary: Story = {
     args: {
         ...defaultArgs,
-        appearance: 'secondary',
+        appearance: "secondary",
     },
 };
 
 export const Outline: Story = {
     args: {
         ...defaultArgs,
-        appearance: 'outline',
+        appearance: "outline",
     },
 };
 
 export const Ghost: Story = {
     args: {
         ...defaultArgs,
-        appearance: 'ghost',
+        appearance: "ghost",
     },
 };
 
 export const Uncontained: Story = {
     args: {
         ...defaultArgs,
-        appearance: 'uncontained',
+        appearance: "uncontained",
     },
 };
 
@@ -127,7 +129,7 @@ export const PrimaryNegative: Story = {
 export const GhostNegative: Story = {
     args: {
         ...defaultArgs,
-        appearance: 'ghost',
+        appearance: "ghost",
         negative: true,
     },
 };
@@ -135,7 +137,7 @@ export const GhostNegative: Story = {
 export const UncontainedNegative: Story = {
     args: {
         ...defaultArgs,
-        appearance: 'uncontained',
+        appearance: "uncontained",
         negative: true,
     },
 };
@@ -143,21 +145,21 @@ export const UncontainedNegative: Story = {
 export const Small: Story = {
     args: {
         ...defaultArgs,
-        size: 'sm',
+        size: "sm",
     },
 };
 
 export const Medium: Story = {
     args: {
         ...defaultArgs,
-        size: 'md',
+        size: "md",
     },
 };
 
 export const Large: Story = {
     args: {
         ...defaultArgs,
-        size: 'lg',
+        size: "lg",
     },
 };
 

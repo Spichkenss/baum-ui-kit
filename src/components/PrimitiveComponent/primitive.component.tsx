@@ -1,6 +1,6 @@
-import {ComponentProps, ElementType} from "react";
-import {classnames} from "../../lib";
-import styles from './primitive.module.scss';
+import { ComponentProps, ElementType } from "react";
+import { classnames } from "../../lib";
+import styles from "./primitive.module.scss";
 
 export type PrimitiveProps = {
     fullWidth?: boolean;
@@ -8,19 +8,24 @@ export type PrimitiveProps = {
 
 type PrimitiveComponentProps<Element extends ElementType> = PrimitiveProps & {
     as?: Element;
-} & Omit<ComponentProps<Element>, 'as'>;
+} & Omit<ComponentProps<Element>, "as">;
 
 export const PrimitiveComponent =
     <Element extends ElementType>(
-        { as, className, fullWidth = false,  ...rest }: PrimitiveComponentProps<Element>,
+        {
+            as,
+            className,
+            fullWidth = false,
+            ...rest
+        }: PrimitiveComponentProps<Element>,
     ) => {
-        const Component = as || 'div';
+        const Component = as || "div";
 
         return (
             <Component
                 className={classnames(
-                    styles['Primitive__Root'],
-                    {[styles.fullWidth]: fullWidth},
+                    styles["Primitive__Root"],
+                    { [styles.fullWidth]: fullWidth },
                     className
                 )}
                 {...rest}

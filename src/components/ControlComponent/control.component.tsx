@@ -1,36 +1,52 @@
-import {ReactNode} from "react";
-import {ControlSize, controlSizeStyles, ControlStatus, controlStatusStyles} from "./control.consts.ts";
-import styles from './control.module.scss';
-import {classnames} from "../../lib";
-import {WithAfterComponent, WithBeforeComponent} from "../../lib/types/common.types.ts";
-import {PrimitiveComponent, PrimitiveProps} from "../PrimitiveComponent";
+import { ReactNode } from "react";
+import {
+    type ControlSize,
+    type ControlStatus,
+    controlSizeStyles,
+    controlStatusStyles
+} from "./control.consts.ts";
+import styles from "./control.module.scss";
+import { classnames } from "../../lib";
+import {
+    type WithAfterComponent,
+    type WithBeforeComponent
+} from "../../lib/types/common.types.ts";
+import { PrimitiveComponent, type PrimitiveProps } from "../PrimitiveComponent";
+import { Conditional } from "../Conditional";
 
-export type ControlComponentProps = WithBeforeComponent
+export type ControlComponentProps = Omit<WithBeforeComponent
     & WithAfterComponent
-    & PrimitiveProps
+    & PrimitiveProps, "label">
     &
     {
         status?: ControlStatus;
         size?: ControlSize;
         children?: ReactNode;
+        label?: string;
     }
 
 export const ControlComponent = ({
     status = "default",
     size = "md",
     children,
+    label,
     ...rest
 }: ControlComponentProps) => {
     return (
         <PrimitiveComponent
-            as={'div'}
+            as={"div"}
             className={classnames(
-                styles['Control__Root'],
+                styles["Control__Root"],
                 controlStatusStyles[status],
                 controlSizeStyles[size]
             )}
             {...rest}
         >
+            <Conditional condition={!!label} fallback={null}>
+                <span className={styles["Control__Label"]}>
+                    {label}
+                </span>
+            </Conditional>
             {children}
         </PrimitiveComponent>
     )

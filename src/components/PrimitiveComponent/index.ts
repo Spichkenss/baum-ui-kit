@@ -1,1 +1,4 @@
-export {PrimitiveComponent, type PrimitiveProps} from './primitive.component.tsx';
+export {
+    PrimitiveComponent,
+    type PrimitiveProps
+} from "./primitive.component.tsx";

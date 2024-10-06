@@ -1,15 +1,15 @@
-import type {Preview} from "@storybook/react";
+import type { Preview } from "@storybook/react";
 import "../src/styles/index.scss"
 
 const preview: Preview = {
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         backgrounds: {
             values: [
-                {name: 'Dark', value: '#1A1B1EFF'},
-                {name: 'Light', value: '#FFF'},
+                { name: "Dark", value: "#1A1B1EFF" },
+                { name: "Light", value: "#FFF" },
             ],
-            default: 'Light',
+            default: "Light",
         },
         controls: {
             matchers: {

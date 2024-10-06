@@ -1,76 +1,103 @@
 @use "/src/styles";
 
-@mixin control-appearance($type) {
-  @include styles.inner-border(var(--control-#{$type}-border-color));
+@mixin label-appearance($type) {
+  color: var(--control-#{$type}-label-color);
+  font: var(--font-label-400);
+  //position: absolute;
+}
 
+@mixin control-appearance($type) {
   color: var(--control-#{$type}-text-color);
   background: var(--control-#{$type}-background);
 
+  &:focus-within {
+    @include styles.inner-border(var(--control-#{$type}-accent));
+  }
+
   & > * {
     color: var(--control-#{$type}-text-color);
+  }
+
+  & > .Control__Label {
+    @include label-appearance($type);
+  }
+
+  @if $type != "default" {
+    @include styles.inner-border(var(--control-#{$type}-accent), 1);
   }
 }
 
 @mixin control-size($size) {
   border-radius: var(--control-border-radius-#{$size});
   height: var(--control-height-#{$size});
+  padding: var(--control-block-spacing-#{$size}) var(--control-inline-spacing-#{$size});
+
+  &:has(.Control__Label) {
+    --control-height-#{$size}: calc(var(--control-height-#{$size}) + var(--font-size-sm));
+
+    .Control__Label ~ * {
+      height: auto;
+    }
+  }
 }
 
 .Control__Root {
+  --control-border-color-hovered: var(--palette-neutral-300);
   --control-placeholder-color: var(--palette-text-secondary);
-  --control-active-border-color: var(--palette-primary);
 
   --control-default-text-color: var(--palette-text-primary);
   --control-default-background: var(--palette-grey-primary);
+  --control-default-accent: var(--palette-primary);
+  --control-default-label-color: var(--palette-text-secondary);
 
   --control-error-text-color: var(--palette-negative-400);
   --control-error-background: var(--palette-negative-50);
-  --control-error-border-color: var(--palette-negative-100);
+  --control-error-accent: var(--palette-negative-500);
+  --control-error-label-color: var(--palette-negative-100);
 
   --control-warning-text-color: var(--palette-warning-400);
   --control-warning-background: var(--palette-warning-50);
-  --control-warning-border-color: var(--palette-warning-100);
+  --control-warning-accent: var(--palette-warning-500);
+  --control-warning-label-color: var(--palette-warning-100);
 
   --control-success-text-color: var(--palette-success-400);
   --control-success-background: var(--palette-success-50);
-  --control-success-border-color: var(--palette-success-100);
+  --control-success-accent: var(--palette-success-500);
+  --control-success-label-color: var(--palette-success-100);
 
-  --control-block-spacing: 4px;
-  --control-inline-spacing: 8px;
+  --control-block-spacing-sm: 4px;
+  --control-block-spacing-md: 10px;
+
+  --control-inline-spacing-sm: 8px;
+  --control-inline-spacing-md: 10px;
 
   --control-border-radius-sm: 6px;
   --control-border-radius-md: 8px;
-  --control-border-radius-lg: 10px;
 
   --control-height-sm: 32px;
   --control-height-md: 44px;
-  --control-height-lg: 56px;
 
-  padding: var(--control-block-spacing) var(--control-inline-spacing);
+  position: relative;
 
-  &:has(input:placeholder-shown) {
-    color: var(--control-default-placeholder-color);
-  }
-
-  &:has(input:focus) {
-    @include styles.inner-border(var(--control-active-border-color));
+  &:hover {
+    @include styles.inner-border(var(--control-border-color-hovered));
   }
 
   &.Status {
     &-default {
-      @include control-appearance(default);
+      @include control-appearance("default");
     }
 
     &-error {
-      @include control-appearance(error);
+      @include control-appearance("error");
     }
 
     &-warning {
-      @include control-appearance(warning);
+      @include control-appearance("warning");
     }
 
     &-success {
-      @include control-appearance(success);
+      @include control-appearance("success");
     }
   }
 
@@ -81,10 +108,6 @@
 
     &-md {
       @include control-size(md);
-    }
-
-    &-lg {
-      @include control-size(lg);
     }
   }
 }

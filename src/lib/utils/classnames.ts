@@ -1,3 +1,3 @@
-import cn from 'classnames';
+import cn from "classnames";
 
 export const classnames = cn;

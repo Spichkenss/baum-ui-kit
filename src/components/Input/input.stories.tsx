@@ -1,18 +1,19 @@
-import {Meta, StoryObj} from "@storybook/react";
-import {Input, InputProps} from "./input.component.tsx";
-import {controlComponentArgTypes} from "../ControlComponent";
-import {FullWidthDecorator} from "../../lib/decorators/full-width.decorator.tsx";
-
+import { Meta, StoryObj } from "@storybook/react";
+import { Input, InputProps } from "./input.component.tsx";
+import { controlComponentArgTypes } from "../ControlComponent";
+import {
+    FullWidthDecorator
+} from "../../lib/decorators/full-width.decorator.tsx";
 
 const meta = {
-    title: 'UI/Input',
+    title: "UI/Input",
     component: Input,
     decorators: [FullWidthDecorator],
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     argTypes: {
         ...controlComponentArgTypes,
         type: {
-            summary: 'radio',
+            summary: "radio",
         }
     },
 } satisfies Meta<typeof Input>;
@@ -23,7 +24,7 @@ type Story = StoryObj<typeof meta>;
 
 const defaultArgs: InputProps = {
     status: "default",
-    size: 'md',
+    size: "md",
     placeholder: "Текст",
     fullWidth: false,
 }
@@ -31,14 +32,21 @@ const defaultArgs: InputProps = {
 export const Text: Story = {
     args: {
         ...defaultArgs,
-        type: 'text'
+        type: "text"
     }
 }
 
 export const Number: Story = {
     args: {
         ...defaultArgs,
-        type: 'number'
+        type: "number"
+    }
+}
+
+export const WithLabel: Story = {
+    args: {
+        ...defaultArgs,
+        label: "Label"
     }
 }
 

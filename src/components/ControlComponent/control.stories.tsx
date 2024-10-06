@@ -1,21 +1,26 @@
-import {Meta, type StoryObj} from "@storybook/react";
-import {ControlComponent, ControlComponentProps} from "./control.component.tsx";
-import {controlComponentArgTypes} from "./control.consts.ts";
-import {UnstyledInput} from "../UnstyledInput";
-import {FullWidthDecorator} from "../../lib/decorators/full-width.decorator.tsx";
+import { Meta, type StoryObj } from "@storybook/react";
+import {
+    ControlComponent,
+    type ControlComponentProps
+} from "./control.component.tsx";
+import { controlComponentArgTypes } from "./control.consts.ts";
+import { UnstyledInput } from "../UnstyledInput";
+import {
+    FullWidthDecorator
+} from "../../lib/decorators/full-width.decorator.tsx";
 
 const meta = {
-    title: 'Primitives/ControlComponent',
+    title: "Primitives/ControlComponent",
     component: ControlComponent,
     decorators: [FullWidthDecorator],
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     argTypes: {
         ...controlComponentArgTypes,
         children: {
-            control: 'select',
+            control: "select",
             options: ["Text input"],
             mapping: {
-                'Text input': <UnstyledInput placeholder="Текст"/>
+                "Text input": <UnstyledInput placeholder="Текст"/>
             },
         }
     },
@@ -26,8 +31,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const defaultArgs: ControlComponentProps = {
-    status: 'default',
-    size: 'md',
+    status: "default",
+    size: "md",
     children: <UnstyledInput type='text' placeholder="Текст"/>,
     fullWidth: false,
 }
@@ -35,15 +40,15 @@ const defaultArgs: ControlComponentProps = {
 export const Input: Story = {
     args: {
         ...defaultArgs,
-        status: 'default',
+        status: "default",
     }
 }
 
 export const Date: Story = {
     args: {
         ...defaultArgs,
-        status: 'default',
-        children: <UnstyledInput type={'date'} placeholder='Текст'/>
+        status: "default",
+        children: <UnstyledInput type={"date"} placeholder='Текст'/>
     }
 }
 
@@ -51,20 +56,20 @@ export const Date: Story = {
 export const Error: Story = {
     args: {
         ...defaultArgs,
-        status: 'error',
+        status: "error",
     }
 }
 
 export const Warning: Story = {
     args: {
         ...defaultArgs,
-        status: 'warning',
+        status: "warning",
     }
 }
 
 export const Success: Story = {
     args: {
         ...defaultArgs,
-        status: 'success',
+        status: "success",
     }
 }
