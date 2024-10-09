@@ -11,17 +11,17 @@ export const UnstyledInput = forwardRef<
     HTMLInputElement,
     UnstyledInputProps
 >(({ type, className, ...rest }, ref) => {
-    return (
-        <input
-            ref={ref}
-            type={type}
-            className={classnames(
-                styles["Unstyled-input__Root"],
-                className
-            )}
-            {...rest}
-        />
-    )
+  return (
+    <input
+      ref={ref}
+      type={type}
+      className={classnames(
+        styles["Unstyled-input__Root"],
+        className
+      )}
+      {...rest}
+    />
+  )
 })
 
 UnstyledInput.displayName = "UnstyledInput";

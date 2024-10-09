@@ -7,11 +7,11 @@ type ConditionalProps = {
 }
 
 export const Conditional = ({
-    condition,
-    children,
-    fallback = null,
+  condition,
+  children,
+  fallback = null,
 }: ConditionalProps) => {
-    if (!condition) return <Fragment>{fallback}</Fragment>;
+  if (!condition) return <Fragment>{fallback}</Fragment>;
 
-    return <Fragment>{children}</Fragment>
+  return <Fragment>{children}</Fragment>
 }

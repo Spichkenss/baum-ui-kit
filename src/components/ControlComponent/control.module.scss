@@ -10,7 +10,7 @@
   color: var(--control-#{$type}-text-color);
   background: var(--control-#{$type}-background);
 
-  &:focus-within {
+  &.Focused {
     @include styles.inner-border(var(--control-#{$type}-accent));
   }
 
@@ -79,8 +79,10 @@
 
   position: relative;
 
-  &:hover {
+  &:not([disabled]):hover {
     @include styles.inner-border(var(--control-border-color-hovered));
+
+    cursor: pointer;
   }
 
   &.Status {

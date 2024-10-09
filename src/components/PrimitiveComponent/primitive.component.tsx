@@ -1,4 +1,4 @@
-import { ComponentProps, ElementType } from "react";
+import { ComponentProps, ElementType, forwardRef, type Ref } from "react";
 import { classnames } from "../../lib";
 import styles from "./primitive.module.scss";
 
@@ -11,28 +11,31 @@ type PrimitiveComponentProps<Element extends ElementType> = PrimitiveProps & {
 } & Omit<ComponentProps<Element>, "as">;
 
 export const PrimitiveComponent =
-    <Element extends ElementType>(
-        {
-            as,
-            className,
-            fullWidth = false,
-            ...rest
-        }: PrimitiveComponentProps<Element>,
+    forwardRef(<Element extends ElementType>(
+      {
+        as,
+        className,
+        fullWidth = false,
+        ...rest
+      }: PrimitiveComponentProps<Element>,
+      ref: Ref<HTMLDivElement>,
     ) => {
-        const Component = as || "div";
+      const Component = as || "div";
 
-        return (
-            <Component
-                className={classnames(
-                    styles["Primitive__Root"],
-                    { [styles.fullWidth]: fullWidth },
-                    className
-                )}
-                {...rest}
-            />
+      return (
+        <Component
+          ref={ref}
+          className={classnames(
+            styles["Primitive__Root"],
+            {
+              [styles.fullWidth]: fullWidth
+            },
+            className
+          )}
+          {...rest}
+        />
 
-        );
-    }
-
+      );
+    })
 
 PrimitiveComponent.displayName = "PrimitiveComponent";

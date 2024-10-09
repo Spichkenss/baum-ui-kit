@@ -1,18 +1,20 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef, useState } from "react";
 import {
-    type ControlSize,
-    type ControlStatus,
-    controlSizeStyles,
-    controlStatusStyles
+  type ControlSize,
+  type ControlStatus,
+  controlSizeStyles,
+  controlStatusStyles
 } from "./control.consts.ts";
 import styles from "./control.module.scss";
 import { classnames } from "../../lib";
 import {
-    type WithAfterComponent,
-    type WithBeforeComponent
+  type WithAfterComponent,
+  type WithBeforeComponent
 } from "../../lib/types/common.types.ts";
 import { PrimitiveComponent, type PrimitiveProps } from "../PrimitiveComponent";
 import { Conditional } from "../Conditional";
+import { useOnClickOutside } from "../../lib/hooks";
+
 
 export type ControlComponentProps = Omit<WithBeforeComponent
     & WithAfterComponent
@@ -23,31 +25,54 @@ export type ControlComponentProps = Omit<WithBeforeComponent
         size?: ControlSize;
         children?: ReactNode;
         label?: string;
+        onClick?: () => void;
     }
 
 export const ControlComponent = ({
-    status = "default",
-    size = "md",
-    children,
-    label,
-    ...rest
+  status = "default",
+  size = "md",
+  children,
+  label,
+  onClick,
+  ...rest
 }: ControlComponentProps) => {
-    return (
-        <PrimitiveComponent
-            as={"div"}
-            className={classnames(
-                styles["Control__Root"],
-                controlStatusStyles[status],
-                controlSizeStyles[size]
-            )}
-            {...rest}
-        >
-            <Conditional condition={!!label} fallback={null}>
-                <span className={styles["Control__Label"]}>
-                    {label}
-                </span>
-            </Conditional>
-            {children}
-        </PrimitiveComponent>
-    )
+  const ref = useRef<HTMLDivElement>(null);
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleClick = () => {
+    onClick?.();
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    if (!isFocused) return;
+    setIsFocused(false);
+  };
+
+  useOnClickOutside(ref, handleBlur)
+
+
+  return (
+    <PrimitiveComponent
+      as={"div"}
+      ref={ref}
+      className={classnames(
+        styles["Control__Root"],
+        controlStatusStyles[status],
+        controlSizeStyles[size],
+        {
+          [styles["Focused"]]: isFocused
+        }
+      )}
+      onClick={handleClick}
+      {...rest}
+    >
+      <Conditional condition={!!label} fallback={null}>
+        <span className={styles["Control__Label"]}>
+          {label}
+        </span>
+      </Conditional>
+      {children}
+    </PrimitiveComponent>
+  )
 }

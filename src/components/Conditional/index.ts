@@ -1,1 +1,1 @@
-export { Conditional } from "./Conditional.tsx"
+export { Conditional } from "./Conditional"

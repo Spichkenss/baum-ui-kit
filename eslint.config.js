@@ -19,7 +19,7 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "indent": ["error", 4],
+      "indent": ["error", 2],
       "max-len": ["error", {"code": 80, "tabWidth": 2}],
       "quotes": ["error", "double"],
       "object-curly-spacing": ["error", "always"],

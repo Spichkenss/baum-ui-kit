@@ -1,4 +1,4 @@
 export {
-    PrimitiveComponent,
-    type PrimitiveProps
+  PrimitiveComponent,
+  type PrimitiveProps
 } from "./primitive.component.tsx";
