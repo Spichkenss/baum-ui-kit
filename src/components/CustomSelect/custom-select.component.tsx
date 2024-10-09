@@ -117,7 +117,7 @@ export const CustomSelect = ({
     }
   }, [isControlledOutside, nativeSelectValue, options, value]);
 
-  const handleNativeSelectValueChange = (
+  const handleNativeSelectValueChange = useCallback((
     event: ChangeEvent<HTMLSelectElement>
   ) => {
     const newSelectedOptionIndex = findSelectedIndex(
@@ -131,19 +131,20 @@ export const CustomSelect = ({
       }
       onChange?.(event);
     }
-  }
+  }, [isControlledOutside, onChange, options, selectedOptionIndex])
 
-  const handleOptionClick: MouseEventHandler<HTMLElement> = (event) => {
-    const index = Array.prototype.indexOf.call(
-      event.currentTarget.parentNode?.children,
-      event.currentTarget,
-    );
-    const option = options[index];
+  const handleOptionClick: MouseEventHandler<HTMLElement> = useCallback(
+    (event) => {
+      const index = Array.prototype.indexOf.call(
+        event.currentTarget.parentNode?.children,
+        event.currentTarget,
+      );
+      const option = options[index];
 
-    if (option && !option.disabled) {
-      selectOption(index);
-    }
-  }
+      if (option && !option.disabled) {
+        selectOption(index);
+      }
+    }, [options, selectOption])
 
   return (
     <Fragment>
