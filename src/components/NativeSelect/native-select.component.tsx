@@ -13,7 +13,7 @@ export const NativeSelect = forwardRef<
     <select ref={ref} {...rest}>
       {options.map(({ value, label }) => (
         <option
-          key={value?.toString()}
+          key={value?.toString() + label.toString()}
           value={value}
         >
           {label}

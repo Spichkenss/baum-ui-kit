@@ -1,0 +1,20 @@
+.Custom-Select-Value__Root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  height: 100%;
+  gap: 4px;
+
+  & .Custom-Select-Value__Prefix {
+    color: var(--palette-text-primary);
+
+    &.Muted {
+      color: var(--palette-text-secondary);
+    }
+  }
+
+  & .Custom-Select-Value__Selected-Value {
+    color: var(--palette-text-secondary);
+  }
+}

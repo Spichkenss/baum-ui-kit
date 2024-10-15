@@ -1,5 +1,5 @@
-import styles from "./control.module.scss";
 import { ArgTypes } from "@storybook/react";
+import styles from "./control.module.scss";
 import { ControlComponentProps } from "./control.component.tsx";
 import { disabledArg } from "../../lib";
 import { primitiveArgs } from "../../lib/consts/storybook.consts.ts";

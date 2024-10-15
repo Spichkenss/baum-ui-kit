@@ -34,14 +34,15 @@ export const ControlComponent = ({
   children,
   label,
   onClick,
+  className,
   ...rest
 }: ControlComponentProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState(false);
 
   const handleClick = () => {
-    onClick?.();
     setIsFocused(true);
+    onClick?.();
   };
 
   const handleBlur = () => {
@@ -51,7 +52,6 @@ export const ControlComponent = ({
 
   useOnClickOutside(ref, handleBlur)
 
-
   return (
     <PrimitiveComponent
       as={"div"}
@@ -60,6 +60,7 @@ export const ControlComponent = ({
         styles["Control__Root"],
         controlStatusStyles[status],
         controlSizeStyles[size],
+        className,
         {
           [styles["Focused"]]: isFocused
         }

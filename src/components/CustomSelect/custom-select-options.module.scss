@@ -1,0 +1,40 @@
+.Custom-Select-Options__Root {
+  --select-options-background: var(--palette-grey-primary);
+  --select-options-max-height: 300px;
+  --select-options-outer-spacing: 8px;
+  --select-options-inner-spacing: 8px;
+  --select-options-border-radius: 8px;
+
+  position: absolute;
+  top: calc(100%);
+  left: 0;
+  background: var(--select-options-background);
+  border-radius: var(--select-options-border-radius);
+  margin-top: var(--select-options-outer-spacing);
+  overflow: clip;
+  padding: var(--select-options-inner-spacing);
+  font: var(--font-body-500);
+  max-height: var(--select-options-max-height);
+  overflow-y: auto;
+
+  & > .Custom-Select-Options__Item {
+    --select-option-background-hovered: var(--palette-primary-active);
+    --select-option-text-color: var(--palette-text-primary);
+
+    color: var(--select-option-text-color);
+    padding: 4px 8px;
+    border-radius: 8px;
+
+    &:hover {
+      background: var(--select-option-background-hovered);
+      cursor: pointer;
+    }
+  }
+
+  & > .Custom-Select-Options__Empty {
+    font: var(--font-body-400);
+    color: var(--palette-text-primary);
+    width: 100%;
+    text-align: center;
+  }
+}

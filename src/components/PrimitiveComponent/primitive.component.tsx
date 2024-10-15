@@ -3,7 +3,8 @@ import { classnames } from "../../lib";
 import styles from "./primitive.module.scss";
 
 export type PrimitiveProps = {
-    fullWidth?: boolean;
+  className?: string;
+  fullWidth?: boolean;
 }
 
 type PrimitiveComponentProps<Element extends ElementType> = PrimitiveProps & {
@@ -27,10 +28,10 @@ export const PrimitiveComponent =
           ref={ref}
           className={classnames(
             styles["Primitive__Root"],
+            className,
             {
               [styles.fullWidth]: fullWidth
             },
-            className
           )}
           {...rest}
         />

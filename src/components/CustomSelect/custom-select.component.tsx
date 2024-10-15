@@ -1,23 +1,32 @@
 import type { SelectOption, SelectProps } from "../Select";
 import {
-  type MouseEventHandler,
   useState,
-  Fragment,
   useMemo,
-  type ChangeEvent,
   useRef,
   useEffect,
-  type SelectHTMLAttributes, useCallback,
+  useCallback,
+  Fragment,
 } from "react";
 import { ControlComponent } from "../ControlComponent";
 import { Conditional } from "../Conditional";
-import { useIsomorphicLayoutEffect } from "../../lib";
 import { VisuallyHidden } from "../VisuallyHidden";
 import { NativeSelect } from "../NativeSelect";
+import { CustomSelectOptions } from "./custom-select-options.component";
+import {
+  NativeSelectChangeHandler,
+  NativeSelectValue,
+  SelectOptionClickHandler,
+  SelectOptionFn,
+  SelectSearchEventHandler
+} from "./custom-select.types";
+import { CustomSelectValue } from "./custom-select-value.component";
+import { useIsomorphicLayoutEffect } from "../../lib";
+import styles from "./custom-select.module.scss";
+import { UnstyledInput } from "../UnstyledInput";
 
 const findSelectedIndex = (
   options: SelectOption[],
-  value: SelectHTMLAttributes<HTMLSelectElement>["value"]
+  value: NativeSelectValue,
 ) => {
   if (value === "") {
     return -1;
@@ -34,20 +43,24 @@ export const CustomSelect = ({
   options = [],
   onChange,
   value,
-  defaultValue = "",
+  defaultValue,
   placeholder,
   fullWidth,
+  prefix,
+  onClose,
+  onOpen,
+  searchable = false,
+  ...rest
 }: SelectProps) => {
   const nativeSelectRef = useRef<HTMLSelectElement>(null);
 
-  const [isControlledOutside, setIsControlledOutside] = useState(
-    value !== undefined
-  );
   const [isOptionsListOpened, setIsOptionsListOpened] = useState(false);
-
+  const [inputValue, setInputValue] = useState("");
   const [nativeSelectValue, setNativeSelectValue] = useState(
     () => value ?? defaultValue
   );
+
+  const isControlledOutside = value !== undefined;
 
   const [
     selectedOptionIndex,
@@ -69,7 +82,6 @@ export const CustomSelect = ({
   }, [options, selectedOptionIndex])
 
   useEffect(() => {
-    setIsControlledOutside(value !== undefined);
     setNativeSelectValue(nativeSelectValue => value ?? nativeSelectValue);
   }, [value]);
 
@@ -82,7 +94,7 @@ export const CustomSelect = ({
   useIsomorphicLayoutEffect(() => {
     if (
       isOptionsArrayHasSomeNativeSelectValue ||
-      nativeSelectValue === ""
+      nativeSelectValue !== ""
     ) {
       dispatchNativeSelectChangeEvent();
     }
@@ -93,15 +105,17 @@ export const CustomSelect = ({
     nativeSelectRef.current?.dispatchEvent(event);
   }
 
-  const closeOptionsList = () => {
+  const closeOptionsList = useCallback(() => {
     setIsOptionsListOpened(false);
-  }
+    onClose?.();
+  }, [onClose])
 
   const openOptionsList = () => {
     setIsOptionsListOpened(true);
+    onOpen?.();
   }
 
-  const selectOption = useCallback((index: number) => {
+  const selectOption: SelectOptionFn = useCallback((index) => {
     const item = options[index];
 
     setNativeSelectValue(item?.value);
@@ -115,10 +129,21 @@ export const CustomSelect = ({
     if (shouldTriggerOnChangeWhenControlledAndInnerValueIsOutOfSync) {
       dispatchNativeSelectChangeEvent();
     }
-  }, [isControlledOutside, nativeSelectValue, options, value]);
 
-  const handleNativeSelectValueChange = useCallback((
-    event: ChangeEvent<HTMLSelectElement>
+    if (searchable) {
+      setInputValue(item?.label.toString());
+    }
+  }, [
+    closeOptionsList,
+    isControlledOutside,
+    nativeSelectValue,
+    options,
+    searchable,
+    value
+  ]);
+
+  const handleNativeSelectValueChange: NativeSelectChangeHandler = useCallback((
+    event
   ) => {
     const newSelectedOptionIndex = findSelectedIndex(
       options,
@@ -133,12 +158,15 @@ export const CustomSelect = ({
     }
   }, [isControlledOutside, onChange, options, selectedOptionIndex])
 
-  const handleOptionClick: MouseEventHandler<HTMLElement> = useCallback(
+  const handleOptionClick: SelectOptionClickHandler = useCallback(
     (event) => {
+      event?.stopPropagation();
+
       const index = Array.prototype.indexOf.call(
         event.currentTarget.parentNode?.children,
         event.currentTarget,
       );
+
       const option = options[index];
 
       if (option && !option.disabled) {
@@ -146,42 +174,81 @@ export const CustomSelect = ({
       }
     }, [options, selectOption])
 
+  const handleSearchWithinOptions: SelectSearchEventHandler = (event) => {
+    setInputValue(event.target.value);
+  }
+
+  const filteredOptionsByInputValue = useMemo(() => {
+    if (!searchable || inputValue === "") return options;
+
+    return options.filter(({ label }) => {
+      return label
+        .toString()
+        .toLowerCase()
+        .includes(inputValue.toLowerCase());
+    })
+  }, [inputValue, options, searchable]);
+
+  const handleSearchableSelectKeyDown:
+    React.KeyboardEventHandler<HTMLInputElement> = (event) => {
+      const { key } = event;
+      if (
+        key === "ArrowLeft" ||
+        key === "ArrowRight" ||
+        key === "Home" ||
+        key === "End"
+      )
+        event.preventDefault()
+    }
+
+  const handleFocusSearchableSelect:
+    React.FocusEventHandler<HTMLInputElement> = (event) => {
+      const tmp = event.target.value;
+      event.target.value = "";
+      event.target.value = tmp;
+    }
+
   return (
     <Fragment>
+      <ControlComponent
+        fullWidth={fullWidth}
+        onClick={openOptionsList}
+        className={styles["Custom-Select__Root"]}
+        {...rest}
+      >
+        {
+          searchable
+            ?
+            <UnstyledInput
+              value={inputValue}
+              placeholder={placeholder}
+              onChange={handleSearchWithinOptions}
+              onKeyDown={handleSearchableSelectKeyDown}
+              onFocus={handleFocusSearchableSelect}
+            />
+            :
+            <CustomSelectValue
+              prefix={prefix}
+              value={selectedOption?.label}
+              placeholder={placeholder}
+            />
+        }
+        <Conditional condition={isOptionsListOpened}>
+          <CustomSelectOptions
+            options={filteredOptionsByInputValue}
+            onOptionClick={handleOptionClick}
+            fullWidth={fullWidth}
+          />
+        </Conditional>
+      </ControlComponent>
       <VisuallyHidden>
         <NativeSelect
-          options={options}
+          options={filteredOptionsByInputValue}
           value={nativeSelectValue}
           onChange={handleNativeSelectValueChange}
           ref={nativeSelectRef}
         />
       </VisuallyHidden>
-      <ControlComponent
-        fullWidth={fullWidth}
-        onClick={openOptionsList}
-      >
-        {
-          selectedOption
-            ? selectedOption.label
-            : placeholder
-        }
-      </ControlComponent>
-      <Conditional condition={isOptionsListOpened}>
-        <ul>
-          {options.map(({ label, value }) => (
-            <li
-              key={value?.toString()}
-              onClick={handleOptionClick}
-              style={{
-                color: "red",
-                marginBottom: 10
-              }}
-            >
-              {label}
-            </li>
-          ))}
-        </ul>
-      </Conditional>
     </Fragment>
   )
 }

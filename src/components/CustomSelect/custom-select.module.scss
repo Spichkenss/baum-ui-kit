@@ -1,0 +1,7 @@
+.Custom-Select__Root {
+  & > * > * {
+
+    color: var(--palette-text-primary);
+  }
+  position: relative;
+}

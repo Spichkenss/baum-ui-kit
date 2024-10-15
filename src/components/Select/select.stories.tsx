@@ -19,17 +19,28 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const options: SelectOption[] = [
-  { label: "Sasha", value: "Front" },
-  { label: "Vova", value: "UI" },
+  { label: "Sasha B.", value: "Senior" },
+  { label: "Vova K.", value: "Middle" },
+  { label: "Oleg J.", value: "Junior" },
+  { label: "Alexey Y.", value: "Lead" },
+  { label: "Alexey R.", value: "Middle+" },
 ]
 
 const defaultArgs: SelectProps = {
   options,
-  placeholder: "Пользователь"
+  placeholder: "Пользователь",
+  prefix: "Выбрано:"
 }
 
 export const Default: Story = {
   args: {
     ...defaultArgs,
+  }
+}
+
+export const Searchable: Story = {
+  args: {
+    ...defaultArgs,
+    searchable: true,
   }
 }
