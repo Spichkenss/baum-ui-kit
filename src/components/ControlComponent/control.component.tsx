@@ -15,7 +15,6 @@ import { PrimitiveComponent, type PrimitiveProps } from "../PrimitiveComponent";
 import { Conditional } from "../Conditional";
 import { useOnClickOutside } from "../../lib/hooks";
 
-
 export type ControlComponentProps = Omit<WithBeforeComponent
     & WithAfterComponent
     & PrimitiveProps, "label">
@@ -26,6 +25,7 @@ export type ControlComponentProps = Omit<WithBeforeComponent
         children?: ReactNode;
         label?: string;
         onClick?: () => void;
+        onBlur?: () => void;
     }
 
 export const ControlComponent = ({
@@ -35,10 +35,11 @@ export const ControlComponent = ({
   label,
   onClick,
   className,
+  onBlur,
   ...rest
 }: ControlComponentProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [isFocused, setIsFocused] = useState(false);
+  const [isRootFocused, setIsFocused] = useState(false);
 
   const handleClick = () => {
     setIsFocused(true);
@@ -46,8 +47,9 @@ export const ControlComponent = ({
   };
 
   const handleBlur = () => {
-    if (!isFocused) return;
+    if (!isRootFocused) return;
     setIsFocused(false);
+    onBlur?.();
   };
 
   useOnClickOutside(ref, handleBlur)
@@ -62,7 +64,7 @@ export const ControlComponent = ({
         controlSizeStyles[size],
         className,
         {
-          [styles["Focused"]]: isFocused
+          [styles["Focused"]]: isRootFocused
         }
       )}
       onClick={handleClick}

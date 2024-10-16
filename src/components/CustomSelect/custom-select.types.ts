@@ -1,4 +1,3 @@
-export type SelectOptionClickHandler = React.MouseEventHandler<HTMLElement>;
 
 export type NativeSelectChangeHandler
   = React.ChangeEventHandler<HTMLSelectElement>;

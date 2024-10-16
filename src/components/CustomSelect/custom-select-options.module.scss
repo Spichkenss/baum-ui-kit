@@ -1,6 +1,6 @@
 .Custom-Select-Options__Root {
   --select-options-background: var(--palette-grey-primary);
-  --select-options-max-height: 300px;
+  --select-options-max-height: 100px;
   --select-options-outer-spacing: 8px;
   --select-options-inner-spacing: 8px;
   --select-options-border-radius: 8px;
@@ -16,20 +16,6 @@
   font: var(--font-body-500);
   max-height: var(--select-options-max-height);
   overflow-y: auto;
-
-  & > .Custom-Select-Options__Item {
-    --select-option-background-hovered: var(--palette-primary-active);
-    --select-option-text-color: var(--palette-text-primary);
-
-    color: var(--select-option-text-color);
-    padding: 4px 8px;
-    border-radius: 8px;
-
-    &:hover {
-      background: var(--select-option-background-hovered);
-      cursor: pointer;
-    }
-  }
 
   & > .Custom-Select-Options__Empty {
     font: var(--font-body-400);

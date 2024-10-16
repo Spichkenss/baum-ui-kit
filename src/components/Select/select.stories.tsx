@@ -24,6 +24,9 @@ const options: SelectOption[] = [
   { label: "Oleg J.", value: "Junior" },
   { label: "Alexey Y.", value: "Lead" },
   { label: "Alexey R.", value: "Middle+" },
+  { label: "Violetta", value: "Designer" },
+  { label: "Sasha", value: "Second Designer" },
+  { label: "Timofei", value: "Bog" },
 ]
 
 const defaultArgs: SelectProps = {

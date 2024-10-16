@@ -14,7 +14,7 @@
     color: var(--control-#{$type}-text-color);
   }
 
-  &.Focused {
+  &.Focused, &:focus-within {
     @include styles.inner-border(var(--control-#{$type}-accent));
   }
 
@@ -30,10 +30,6 @@
 @mixin control-size($size) {
   border-radius: var(--control-border-radius-#{$size});
   height: var(--control-height-#{$size});
-
-  & > *:not(.Control__Label) {
-    padding: var(--control-block-spacing-#{$size}) var(--control-inline-spacing-#{$size});
-  }
 
   &:has(.Control__Label) {
     --control-height-#{$size}: calc(var(--control-height-#{$size}) + var(--font-size-sm));

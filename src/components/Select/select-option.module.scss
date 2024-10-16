@@ -1,0 +1,18 @@
+.Select-Item__Root {
+  --select-item-background-hovered: var(--palette-primary-opacity);
+  --select-item-background-focused: var(--palette-primary-active);
+  --select-item-text-color: var(--palette-text-primary);
+
+  color: var(--select-option-text-color);
+  padding: 4px 8px;
+  border-radius: 8px;
+
+  &:hover {
+    background: var(--select-item-background-hovered);
+    cursor: pointer;
+  }
+
+  &.Focused {
+    background: var(--select-item-background-focused);
+  }
+}

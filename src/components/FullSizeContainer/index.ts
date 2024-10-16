@@ -1,0 +1,1 @@
+export { FullSizeContainer } from "./full-size-container.component"

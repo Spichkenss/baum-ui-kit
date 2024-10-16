@@ -1,7 +1,16 @@
 .Custom-Select__Root {
   & > * > * {
-
     color: var(--palette-text-primary);
   }
   position: relative;
+
+  .Custom-Select_Search-Input {
+    padding-left: 10px;
+
+    &.Selected {
+      &::placeholder {
+        color: var(--palette-text-primary);
+      }
+    }
+  }
 }
