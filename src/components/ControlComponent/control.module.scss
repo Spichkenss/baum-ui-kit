@@ -3,16 +3,15 @@
 @mixin label-appearance($type) {
   color: var(--control-#{$type}-label-color);
   font: var(--font-label-400);
+  padding-left: 10px;
+  width: 100%;
+  display: block;
+  padding-top: 4px;
 }
 
 @mixin control-appearance($type) {
   color: var(--control-#{$type}-text-color);
   background: var(--control-#{$type}-background);
-  font: var(--font-body-500);
-
-  & > * {
-    color: var(--control-#{$type}-text-color);
-  }
 
   &.Focused, &:focus-within {
     @include styles.inner-border(var(--control-#{$type}-accent));
@@ -25,6 +24,12 @@
   @if $type != "default" {
     @include styles.inner-border(var(--control-#{$type}-accent), 1);
   }
+
+  & > * {
+    color: var(--control-#{$type}-text-color);
+    font: var(--font-body-500);
+  }
+
 }
 
 @mixin control-size($size) {
@@ -32,11 +37,7 @@
   height: var(--control-height-#{$size});
 
   &:has(.Control__Label) {
-    --control-height-#{$size}: calc(var(--control-height-#{$size}) + var(--font-size-sm));
-
-    .Control__Label ~ * {
-      height: auto;
-    }
+    height: calc(var(--control-height-#{$size}) + var(--font-size-sm));
   }
 }
 
@@ -77,11 +78,11 @@
   --control-height-md: 44px;
 
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   &:not([disabled]):hover {
     @include styles.inner-border(var(--control-border-color-hovered));
-
-    cursor: pointer;
   }
 
   &.Status {
@@ -110,5 +111,10 @@
     &-md {
       @include control-size(md);
     }
+  }
+
+  &,
+  & > * {
+    cursor: text;
   }
 }

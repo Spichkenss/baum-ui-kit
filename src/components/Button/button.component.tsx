@@ -1,5 +1,6 @@
-import { type ComponentPropsWithoutRef, forwardRef } from "react";
-import styles from "./button.module.scss";
+import {
+  forwardRef
+} from "react";
 import { classnames } from "../../lib";
 import {
   ButtonAppearance,
@@ -7,49 +8,54 @@ import {
   buttonAppearenceStyles,
   buttonSizeStyles
 } from "./button.consts.ts";
-import {
-  WithAfterComponent,
-  WithBeforeComponent
-} from "../../lib/types/common.types.ts";
-import { PrimitiveComponent, PrimitiveProps } from "../PrimitiveComponent";
+import styles from "./button.module.scss";
+import { PrimitiveButton } from "../Primitives/Button";
+import type {
+  PrimitiveButtonProps
+} from "../Primitives/Button/primitive-button";
+import type { WithAfterAndBeforeElements } from "../../lib/types/common.types";
 
 /*
     TODO добавить функционал кнопке
-    - href
     - onlyIcon
  */
 
-type ButtonProps = ComponentPropsWithoutRef<"button">
-    & WithBeforeComponent
-    & WithAfterComponent
-    & PrimitiveProps
-    & {
-    size?: ButtonSize;
-    appearance?: ButtonAppearance;
-    isLoading?: boolean;
-    negative?: boolean;
-};
+export type ButtonProps = {
+  size?: ButtonSize;
+  appearance?: ButtonAppearance;
+  isLoading?: boolean;
+  negative?: boolean;
+  href?: string;
+} & PrimitiveButtonProps
+  & WithAfterAndBeforeElements;
 
-const Button = forwardRef<
-    HTMLButtonElement,
-    ButtonProps
->(({
-  className,
-  size = "md",
-  appearance = "primary",
-  disabled = false,
-  isLoading = false,
-  children,
-  before,
-  after,
-  negative = false,
-  ...rest
-}, ref) => {
+export const Button = forwardRef<
+  HTMLButtonElement,
+  ButtonProps
+>((
+  {
+    className,
+    size = "md",
+    appearance = "primary",
+    disabled = false,
+    isLoading = false,
+    children,
+    before,
+    after,
+    negative = false,
+    href,
+    ...rest
+  },
+  ref
+) => {
 
   return (
-    <PrimitiveComponent
-      as={"button"}
+    <PrimitiveButton
       ref={ref}
+      as={href ? "a" : "button"}
+      href={href}
+      disabled={disabled || isLoading}
+      data-loading={isLoading}
       className={classnames(
         styles["Button__Root"],
         buttonSizeStyles[size],
@@ -59,16 +65,13 @@ const Button = forwardRef<
         },
         className,
       )}
-      disabled={disabled || isLoading}
-      data-loading={isLoading}
       {...rest}
     >
       {isLoading && (
         <span className={styles["Button__Loader"]}>
-                    loading
+          loading
         </span>
       )}
-
       <span className={styles["Button__Label"]}>
         <span className={styles["Button__Label__Before"]}>
           {before}
@@ -78,11 +81,8 @@ const Button = forwardRef<
           {after}
         </span>
       </span>
-    </PrimitiveComponent>
+    </PrimitiveButton>
   );
 });
 
 Button.displayName = "Button";
-
-export { Button };
-export type { ButtonProps };

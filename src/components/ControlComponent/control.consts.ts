@@ -9,12 +9,12 @@ const controlStatusStyles = {
   error: styles["Status-error"],
   warning: styles["Status-warning"],
   success: styles["Status-success"],
-}
+} as const;
 
 const controlSizeStyles = {
   sm: styles["Size-sm"],
   md: styles["Size-md"],
-}
+} as const;
 
 type ControlStatus = keyof typeof controlStatusStyles;
 type ControlSize = keyof typeof controlSizeStyles;

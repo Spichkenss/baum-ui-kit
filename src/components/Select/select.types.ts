@@ -1,5 +1,5 @@
-import type { PrimitiveProps } from "../PrimitiveComponent";
 import { ControlComponentProps } from "../ControlComponent";
+import type { WithPrimitiveProps } from "../PrimitiveComponent";
 
 export type SelectOptionClickHandler = React.MouseEventHandler<HTMLElement>;
 
@@ -9,10 +9,10 @@ export type SelectOption = {
     disabled?: boolean;
 }
 
-export type SelectRenderOptionFnExtraArgs = PrimitiveProps & {
+export type SelectRenderOptionFnExtraArgs = WithPrimitiveProps<{
     isFocused: boolean;
     onOptionClick: SelectOptionClickHandler;
-};
+}>;
 
 export type SelectRenderOptionFn = (
   props: SelectOption,
@@ -20,7 +20,7 @@ export type SelectRenderOptionFn = (
   extraArgs?: SelectRenderOptionFnExtraArgs,
 ) => React.ReactNode;
 
-export type SelectProps = ControlComponentProps & PrimitiveProps & {
+export type SelectProps = WithPrimitiveProps<{
     value?: string;
     defaultValue?: string;
     onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -31,6 +31,6 @@ export type SelectProps = ControlComponentProps & PrimitiveProps & {
     prefix?: string;
     searchable?: boolean;
     renderOption?: SelectRenderOptionFn;
-};
+}> & ControlComponentProps;
 
 export type SelectChangeHandler = (value: string) => void;

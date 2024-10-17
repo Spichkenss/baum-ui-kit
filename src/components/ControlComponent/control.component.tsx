@@ -7,26 +7,21 @@ import {
 } from "./control.consts.ts";
 import styles from "./control.module.scss";
 import { classnames } from "../../lib";
-import {
-  type WithAfterComponent,
-  type WithBeforeComponent
-} from "../../lib/types/common.types.ts";
-import { PrimitiveComponent, type PrimitiveProps } from "../PrimitiveComponent";
 import { Conditional } from "../Conditional";
 import { useOnClickOutside } from "../../lib/hooks";
+import type { WithAfterAndBeforeElements } from "../../lib/types/common.types";
+import { PrimitiveDiv } from "../Primitives/Div";
+import type { PrimitiveDivProps } from "../Primitives/Div/primitive-div";
 
-export type ControlComponentProps = Omit<WithBeforeComponent
-    & WithAfterComponent
-    & PrimitiveProps, "label">
-    &
-    {
-        status?: ControlStatus;
-        size?: ControlSize;
-        children?: ReactNode;
-        label?: string;
-        onClick?: () => void;
-        onBlur?: () => void;
-    }
+export type ControlComponentProps = {
+  status?: ControlStatus;
+  size?: ControlSize;
+  children?: ReactNode;
+  label?: string;
+  onClick?: () => void;
+  onBlur?: () => void;
+} & PrimitiveDivProps
+  & WithAfterAndBeforeElements;
 
 export const ControlComponent = ({
   status = "default",
@@ -36,6 +31,7 @@ export const ControlComponent = ({
   onClick,
   className,
   onBlur,
+  id,
   ...rest
 }: ControlComponentProps) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -55,8 +51,7 @@ export const ControlComponent = ({
   useOnClickOutside(ref, handleBlur)
 
   return (
-    <PrimitiveComponent
-      as={"div"}
+    <PrimitiveDiv
       ref={ref}
       className={classnames(
         styles["Control__Root"],
@@ -71,11 +66,14 @@ export const ControlComponent = ({
       {...rest}
     >
       <Conditional condition={!!label} fallback={null}>
-        <span className={styles["Control__Label"]}>
+        <label
+          htmlFor={id}
+          className={styles["Control__Label"]}
+        >
           {label}
-        </span>
+        </label>
       </Conditional>
       {children}
-    </PrimitiveComponent>
+    </PrimitiveDiv>
   )
 }

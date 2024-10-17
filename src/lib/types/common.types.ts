@@ -1,9 +1,4 @@
-import { ReactNode } from "react";
-
-export type WithBeforeComponent = {
-    before?: ReactNode;
-}
-
-export type WithAfterComponent = {
-    after?: ReactNode;
+export type WithAfterAndBeforeElements = {
+    before?: React.ReactNode;
+    after?: React.ReactNode;
 }

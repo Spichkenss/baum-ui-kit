@@ -169,3 +169,10 @@ export const FullWidth: Story = {
     fullWidth: true,
   },
 };
+
+export const AsLink: Story = {
+  args: {
+    ...defaultArgs,
+    href: "https://google.com"
+  }
+}
