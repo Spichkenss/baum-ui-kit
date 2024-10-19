@@ -1,3 +1,8 @@
+export type WithAfterAndBeforeElements = {
+  before?: React.ReactNode;
+  after?: React.ReactNode;
+}
+
 export type KeyboardKey =
   | "Backspace" | "Tab" | "Enter" | "Shift" | "Control" | "Alt" | "Pause"
   | "CapsLock" | "Escape" | "Space" | "PageUp" | "PageDown" | "End" | "Home"
@@ -18,3 +23,14 @@ export type KeyboardKey =
   | "Numpad6" | "Numpad7" | "Numpad8" | "Numpad9" | "NumpadAdd"
   | "NumpadSubtract" | "NumpadMultiply" | "NumpadDivide" | "NumpadDecimal";
 
+
+export type Breakpoint =
+  | "2xs"
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl";

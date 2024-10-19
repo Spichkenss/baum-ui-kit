@@ -1,0 +1,49 @@
+:root {
+  --spacing_2xs: 1px;
+  --spacing_xs: 4px;
+  --spacing_sm: 8px;
+  --spacing_md: 12px;
+  --spacing_lg: 16px;
+  --spacing_xl: 20px;
+  --spacing_2xl: 24px;
+  --spacing_3xl: 28px;
+  --spacing_4xl: 32px;
+}
+
+.spacing {
+  &-2xs {
+    --spacing-size: var(--spacing_2xs);
+  }
+
+  &-xs {
+    --spacing-size: var(--spacing_xs);
+  }
+
+  &-sm {
+    --spacing-size: var(--spacing_sm);
+  }
+
+  &-md {
+    --spacing-size: var(--spacing_md);
+  }
+
+  &-lg {
+    --spacing-size: var(--spacing_lg);
+  }
+
+  &-xl {
+    --spacing-size: var(--spacing_xl);
+  }
+
+  &-2xl {
+    --spacing-size: var(--spacing_2xl);
+  }
+
+  &-3xl {
+    --spacing-size: var(--spacing_3xl);
+  }
+
+  &-4xl {
+    --spacing-size: var(--spacing_4xl);
+  }
+}

@@ -1,5 +1,6 @@
-import type { KeyboardKey } from "../types/event.types";
 import { useEffect } from "react";
+
+import type { KeyboardKey } from "@global-types";
 
 type KeyMap = {
   [keys in KeyboardKey]: (event: KeyboardEvent) => void;

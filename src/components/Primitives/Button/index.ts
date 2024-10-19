@@ -1,1 +1,4 @@
-export { PrimitiveButton } from "./primitive-button"
+export {
+  PrimitiveButton,
+  type PrimitiveButtonProps
+} from "./primitive-button"

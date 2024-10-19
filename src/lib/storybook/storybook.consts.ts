@@ -1,5 +1,6 @@
 import { ArgTypes } from "@storybook/react";
-import { PrimitiveProps } from "../../components/PrimitiveComponent";
+
+import type { PrimitiveProps } from "@components/PrimitiveComponent";
 
 export const disabledArg = {
   table: {

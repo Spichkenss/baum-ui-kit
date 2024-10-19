@@ -1,23 +1,33 @@
-import { forwardRef, useId } from "react";
-import { ControlComponent, ControlComponentProps } from "../ControlComponent";
-import { UnstyledInput, UnstyledInputProps } from "../UnstyledInput";
-import styles from "./input.module.scss";
+import { forwardRef, type Ref, useId } from "react";
 
-export type InputProps = UnstyledInputProps & ControlComponentProps;
+import {
+  UnstyledInput,
+  type UnstyledInputProps
+} from "@components/UnstyledInput";
+import {
+  ControlComponent,
+  type ControlComponentProps
+} from "@components/ControlComponent";
 
-export const Input = forwardRef<
-    HTMLInputElement,
-    InputProps
->(({
-  status,
-  size = "md",
-  type = "text",
-  fullWidth,
-  before,
-  after,
-  label,
-  ...rest
-}, ref) => {
+import styles from "./Input.module.scss";
+
+export type InputProps =
+  & UnstyledInputProps
+  & ControlComponentProps;
+
+export const Input = forwardRef((
+  {
+    status,
+    size = "md",
+    type = "text",
+    fullWidth,
+    before,
+    after,
+    label,
+    ...rest
+  }: InputProps,
+  ref: Ref<HTMLInputElement>
+) => {
   const id = useId();
 
   return (

@@ -1,8 +1,10 @@
-import { ArgTypes } from "@storybook/react";
+import type { ArgTypes } from "@storybook/react";
+
+import { disabledArg, primitiveArgs } from "@lib/storybook/storybook.consts";
+
+import type { ControlComponentProps } from "./control.component";
 import styles from "./control.module.scss";
-import { ControlComponentProps } from "./control.component.tsx";
-import { disabledArg } from "../../lib";
-import { primitiveArgs } from "../../lib/consts/storybook.consts.ts";
+
 
 const controlStatusStyles = {
   default: styles["Status-default"],

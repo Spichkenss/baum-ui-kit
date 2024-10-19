@@ -1,16 +1,22 @@
-import { ComponentPropsWithoutRef, forwardRef } from "react";
+import { type ComponentPropsWithoutRef, forwardRef, type Ref } from "react";
+
+import { classnames } from "@lib/classnames";
+
 import styles from "./unstyled-input.component.module.scss";
-import { classnames } from "../../lib";
 
 export type UnstyledInputProps = Omit<
     ComponentPropsWithoutRef<"input">,
     "size"
 >;
 
-export const UnstyledInput = forwardRef<
-    HTMLInputElement,
-    UnstyledInputProps
->(({ type, className, ...rest }, ref) => {
+export const UnstyledInput = forwardRef((
+  {
+    type,
+    className,
+    ...rest
+  }: UnstyledInputProps,
+  ref: Ref<HTMLInputElement>
+) => {
   return (
     <input
       ref={ref}

@@ -1,13 +1,13 @@
-import { Meta, type StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
+
+import { FullWidthDecorator } from "@lib/storybook/decorators/full-width";
+import { UnstyledInput } from "@components/UnstyledInput";
+
 import {
   ControlComponent,
   type ControlComponentProps
-} from "./control.component.tsx";
-import { controlComponentArgTypes } from "./control.consts.ts";
-import { UnstyledInput } from "../UnstyledInput";
-import {
-  FullWidthDecorator
-} from "../../lib/decorators/full-width.decorator.tsx";
+} from "./control.component";
+import { controlComponentArgTypes } from "./control.consts";
 
 const meta = {
   title: "Primitives/ControlComponent",

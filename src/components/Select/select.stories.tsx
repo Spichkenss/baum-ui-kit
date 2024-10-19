@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
+import { FullWidthDecorator } from "@lib/storybook/decorators/full-width";
+import { controlComponentArgTypes } from "@components/ControlComponent";
+
 import { Select } from "./select.component";
-import { FullWidthDecorator } from "../../lib/decorators/full-width.decorator";
-import { controlComponentArgTypes } from "../ControlComponent";
 import type { SelectOption, SelectProps } from "./select.types";
 
 const meta = {

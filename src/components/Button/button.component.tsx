@@ -1,38 +1,35 @@
+import { forwardRef, type Ref } from "react";
+
+import { classnames } from "@lib/classnames";
+import type { WithAfterAndBeforeElements } from "@global-types";
+
 import {
-  forwardRef
-} from "react";
-import { classnames } from "../../lib";
-import {
-  ButtonAppearance,
-  ButtonSize,
+  type ButtonSize,
+  type ButtonAppearance,
   buttonAppearenceStyles,
   buttonSizeStyles
-} from "./button.consts.ts";
+} from "./button.consts";
+import {
+  PrimitiveButton,
+  type PrimitiveButtonProps
+} from "../Primitives/Button";
+
 import styles from "./button.module.scss";
-import { PrimitiveButton } from "../Primitives/Button";
-import type {
-  PrimitiveButtonProps
-} from "../Primitives/Button/primitive-button";
-import type { WithAfterAndBeforeElements } from "../../lib/types/common.types";
 
-/*
-    TODO добавить функционал кнопке
-    - onlyIcon
- */
-
-export type ButtonProps = {
+type BaseButtonProps = {
   size?: ButtonSize;
   appearance?: ButtonAppearance;
   isLoading?: boolean;
   negative?: boolean;
   href?: string;
-} & PrimitiveButtonProps
-  & WithAfterAndBeforeElements;
+}
 
-export const Button = forwardRef<
-  HTMLButtonElement,
-  ButtonProps
->((
+export type ButtonProps =
+  & WithAfterAndBeforeElements
+  & BaseButtonProps
+  & PrimitiveButtonProps;
+
+export const Button = forwardRef((
   {
     className,
     size = "md",
@@ -45,8 +42,8 @@ export const Button = forwardRef<
     negative = false,
     href,
     ...rest
-  },
-  ref
+  }: ButtonProps,
+  ref: Ref<HTMLButtonElement | HTMLAnchorElement>
 ) => {
 
   return (

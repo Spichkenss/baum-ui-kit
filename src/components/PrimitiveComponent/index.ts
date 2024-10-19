@@ -1,4 +1,5 @@
 export {
   createPrimitiveComponent,
-  type WithPrimitiveProps
+  type WithPrimitiveProps,
+  type PrimitiveProps
 } from "./primitive.builder"

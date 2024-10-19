@@ -1,6 +1,8 @@
-import { CustomSelect } from "../CustomSelect";
-import type { SelectProps } from "./select.types";
 import { useState } from "react";
+
+import { CustomSelect } from "@components/CustomSelect";
+
+import type { SelectProps } from "./select.types";
 import { SelectOption } from "./select-option.component";
 
 export const Select = ({ options = [], ...rest }: SelectProps) => {

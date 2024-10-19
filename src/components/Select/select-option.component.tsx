@@ -1,10 +1,12 @@
-import styles from "./select-option.module.scss"
-import { classnames } from "../../lib";
-import { PrimitiveComponent } from "../PrimitiveComponent";
+import { classnames } from "@lib/classnames";
+import { PrimitiveDiv } from "@components/Primitives/Div";
+
 import type {
   SelectOption as TSelectOption,
   SelectRenderOptionFnExtraArgs
 } from "./select.types";
+
+import styles from "./select-option.module.scss";
 
 type SelectOptionProps = {
   option: TSelectOption;
@@ -29,9 +31,8 @@ export const SelectOption = ({
   } = extraArgs ?? {};
 
   return (
-    <PrimitiveComponent
+    <PrimitiveDiv
       key={value}
-      as='div'
       role="option"
       fullWidth={true}
       aria-disabled={disabled}
@@ -46,6 +47,6 @@ export const SelectOption = ({
       {...rest}
     >
       {label}
-    </PrimitiveComponent>
+    </PrimitiveDiv>
   )
 }

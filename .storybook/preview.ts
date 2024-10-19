@@ -2,7 +2,11 @@ import type { Preview } from "@storybook/react";
 import "../src/styles/index.scss"
 
 const preview: Preview = {
+  tags: ["autodocs"],
   parameters: {
+    docs: {
+      toc: true
+    },
     layout: "padded",
     backgrounds: {
       values: [

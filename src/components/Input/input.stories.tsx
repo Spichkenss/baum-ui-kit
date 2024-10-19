@@ -1,9 +1,8 @@
-import { Meta, StoryObj } from "@storybook/react";
-import { Input, InputProps } from "./input.component.tsx";
-import { controlComponentArgTypes } from "../ControlComponent";
-import {
-  FullWidthDecorator
-} from "../../lib/decorators/full-width.decorator.tsx";
+import type { Meta, StoryObj } from "@storybook/react";
+
+import { Input, type InputProps } from "./input.component";
+import { FullWidthDecorator } from "@lib/storybook/decorators/full-width";
+import { controlComponentArgTypes } from "@components/ControlComponent";
 
 const meta = {
   title: "UI/Input",

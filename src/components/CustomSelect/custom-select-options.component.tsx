@@ -1,6 +1,8 @@
-import { SelectOption } from "../Select"
+import type { PrimitiveProps } from "@components/PrimitiveComponent";
+import type { SelectOption } from "@components/Select";
+import { PrimitiveDiv } from "@components/Primitives/Div";
+
 import styles from "./custom-select-options.module.scss";
-import { PrimitiveComponent, PrimitiveProps } from "../PrimitiveComponent";
 
 type CustomSelectOptionsProps = PrimitiveProps & {
   options: SelectOption[];
@@ -14,7 +16,7 @@ export const CustomSelectOptions = ({
 }: CustomSelectOptionsProps) => {
 
   return (
-    <PrimitiveComponent
+    <PrimitiveDiv
       as="div"
       role="combobox"
       className={styles["Custom-Select-Options__Root"]}
@@ -28,6 +30,6 @@ export const CustomSelectOptions = ({
           Ничего не найдено
         </div>
       }
-    </PrimitiveComponent>
+    </PrimitiveDiv>
   )
 }

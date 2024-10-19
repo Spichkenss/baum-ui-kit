@@ -1,1 +1,3 @@
-export { VisuallyHidden } from "./visually-hidden.compoent"
+export {
+  VisuallyHidden
+} from "./visually-hidden.compoent"

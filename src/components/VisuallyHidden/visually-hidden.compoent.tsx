@@ -1,12 +1,10 @@
 import {
   cloneElement,
   Fragment,
-  type ReactElement,
-  type ReactNode
 } from "react";
 
 type VisuallyHiddenProps = {
-    children: ReactNode;
+    children: React.ReactNode;
 }
 
 const visuallyHidden = {
@@ -21,7 +19,7 @@ const visuallyHidden = {
 }
 
 export const VisuallyHidden = ({ children }: VisuallyHiddenProps) => {
-  const element = children as ReactElement;
+  const element = children as React.ReactElement;
 
   return (
     <Fragment>

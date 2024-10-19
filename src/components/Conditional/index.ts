@@ -1,1 +1,3 @@
-export { Conditional } from "./conditional.component"
+export {
+  Conditional
+} from "./conditional.component"

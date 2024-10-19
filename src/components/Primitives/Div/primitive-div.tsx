@@ -5,5 +5,6 @@ export const PrimitiveDiv = createPrimitiveComponent("div");
 
 type PrimitiveDivComponentProps = ComponentProps<typeof PrimitiveDiv>;
 
-export type PrimitiveDivProps = PrimitiveDivComponentProps &
-  ComponentPropsWithoutRef<"div">;
+export type PrimitiveDivProps =
+  & PrimitiveDivComponentProps
+  & ComponentPropsWithoutRef<"div">;

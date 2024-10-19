@@ -1,17 +1,19 @@
 import {
-  type AsProp,
-  createPolymorphicComponent,
-  type PolymorphicComponentProps,
-} from "../../lib/utils/createPolymorphicComponent";
-import {
   type ElementType,
   forwardRef,
   type PropsWithoutRef
 } from "react";
-import { classnames } from "../../lib";
+
+import { classnames } from "@lib/classnames";
+import {
+  type AsProp,
+  createPolymorphicComponent,
+  type PolymorphicComponentProps
+} from "@lib/utils/createPolymorphicComponent";
+
 import styles from "./primitive.module.scss";
 
-type PrimitiveProps = {
+export type PrimitiveProps = {
   className?: string;
   fullWidth?: boolean;
 };
@@ -25,7 +27,9 @@ export const createPrimitiveComponent =
     const Component = createPolymorphicComponent<TElem, PrimitiveProps>(as);
 
     return forwardRef<
-      HTMLElement,
+      TElem extends keyof HTMLElementTagNameMap
+        ? HTMLElementTagNameMap[TElem]
+        : HTMLElement,
       PropsWithoutRef<WithPrimitiveProps<PolymorphicComponentProps<TElem>>>
     >(
       (

@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, ButtonProps } from "./button.component";
-import { buttonAppearenceStyles, buttonSizeStyles } from "./button.consts.ts";
-import { disabledArg } from "../../lib";
-import { primitiveArgs } from "../../lib/consts/storybook.consts.ts";
-import {
-  FullWidthDecorator
-} from "../../lib/decorators/full-width.decorator.tsx";
+import { FullWidthDecorator } from "@lib/storybook/decorators/full-width";
+import { disabledArg, primitiveArgs } from "@lib/storybook/storybook.consts";
+
+import { Button, type ButtonProps } from "./button.component";
+import { buttonAppearenceStyles, buttonSizeStyles } from "./button.consts";
 
 const meta = {
   title: "UI/Button",

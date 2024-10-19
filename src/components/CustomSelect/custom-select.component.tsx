@@ -1,34 +1,35 @@
+import {
+  Fragment,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react";
+
+import { classnames } from "@lib/classnames";
+import { useSuperKeyDown } from "@hooks/useSuperKeyDown";
+import { useIsomorphicLayoutEffect } from "@hooks/useIsomorphicLayoutEffect";
+import { ControlComponent } from "@components/ControlComponent";
+import { UnstyledInput } from "@components/UnstyledInput";
 import type {
   SelectOption,
   SelectOptionClickHandler,
-  SelectProps,
-} from "../Select";
-import {
-  useState,
-  useMemo,
-  useRef,
-  useEffect,
-  useCallback,
-  Fragment,
-} from "react";
-import {
-  ControlComponent,
-} from "../ControlComponent";
-import { Conditional } from "../Conditional";
-import { VisuallyHidden } from "../VisuallyHidden";
-import { NativeSelect } from "../NativeSelect";
+  SelectProps
+} from "@components/Select";
+import { NativeSelect } from "@components/NativeSelect";
+import { Conditional } from "@components/Conditional";
+import { VisuallyHidden } from "@components/VisuallyHidden";
+
+import { CustomSelectValue } from "./custom-select-value.component";
 import { CustomSelectOptions } from "./custom-select-options.component";
-import {
+import type {
   NativeSelectChangeHandler,
   NativeSelectValue,
-  SelectOptionFn,
-  SelectSearchEventHandler
+  SelectOptionFn, SelectSearchEventHandler
 } from "./custom-select.types";
-import { CustomSelectValue } from "./custom-select-value.component";
-import { classnames, useIsomorphicLayoutEffect } from "../../lib";
+
 import styles from "./custom-select.module.scss";
-import { UnstyledInput } from "../UnstyledInput";
-import { useSuperKeyDown } from "../../lib/hooks";
 
 const findSelectedIndex = (
   options: SelectOption[],

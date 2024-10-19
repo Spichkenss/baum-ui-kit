@@ -1,5 +1,5 @@
-import { ControlComponentProps } from "../ControlComponent";
-import type { WithPrimitiveProps } from "../PrimitiveComponent";
+import type { WithPrimitiveProps } from "@components/PrimitiveComponent";
+import type { ControlComponentProps } from "@components/ControlComponent";
 
 export type SelectOptionClickHandler = React.MouseEventHandler<HTMLElement>;
 

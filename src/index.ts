@@ -1,2 +1,5 @@
 export * from "./components";
-export { classnames } from "./lib"
+export * from "./lib";
+export * from "./hooks";
+export * from "./helpers";
+export * from "./hoc";

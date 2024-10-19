@@ -7,5 +7,6 @@ export const PrimitiveButton = createPrimitiveComponent<ButtonTag>("button");
 
 type PrimitiveButtonComponentProps = ComponentProps<typeof PrimitiveButton>;
 
-export type PrimitiveButtonProps = PrimitiveButtonComponentProps &
-  ComponentPropsWithoutRef<"button">;
+export type PrimitiveButtonProps =
+  & PrimitiveButtonComponentProps
+  & ComponentPropsWithoutRef<"button">;

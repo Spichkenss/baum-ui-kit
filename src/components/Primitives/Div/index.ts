@@ -1,1 +1,4 @@
-export { PrimitiveDiv } from "./primitive-div"
+export {
+  PrimitiveDiv,
+  type PrimitiveDivProps
+} from "./primitive-div"

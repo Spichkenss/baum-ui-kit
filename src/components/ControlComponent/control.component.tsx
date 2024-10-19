@@ -1,26 +1,33 @@
-import { ReactNode, useRef, useState } from "react";
+import { useRef, useState } from "react";
+
+import { Conditional } from "@components/Conditional";
+import { useOnClickOutside } from "@hooks/useOnClickOutside";
+import { PrimitiveDiv } from "@components/Primitives/Div";
+import type { WithAfterAndBeforeElements } from "@global-types";
+import { classnames } from "@lib/classnames";
+
 import {
   type ControlSize,
   type ControlStatus,
   controlSizeStyles,
   controlStatusStyles
-} from "./control.consts.ts";
-import styles from "./control.module.scss";
-import { classnames } from "../../lib";
-import { Conditional } from "../Conditional";
-import { useOnClickOutside } from "../../lib/hooks";
-import type { WithAfterAndBeforeElements } from "../../lib/types/common.types";
-import { PrimitiveDiv } from "../Primitives/Div";
-import type { PrimitiveDivProps } from "../Primitives/Div/primitive-div";
+} from "./control.consts";
 
-export type ControlComponentProps = {
+import styles from "./control.module.scss";
+import type { PrimitiveInputProps } from "@components/Primitives/Input";
+
+type BaseControlComponentProps = {
   status?: ControlStatus;
   size?: ControlSize;
-  children?: ReactNode;
+  children?: React.ReactNode;
   label?: string;
   onClick?: () => void;
   onBlur?: () => void;
-} & PrimitiveDivProps
+}
+
+export type ControlComponentProps =
+  & Omit<PrimitiveInputProps, keyof BaseControlComponentProps>
+  & BaseControlComponentProps
   & WithAfterAndBeforeElements;
 
 export const ControlComponent = ({

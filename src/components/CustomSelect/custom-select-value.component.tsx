@@ -1,6 +1,7 @@
-import { classnames } from "../../lib";
-import { SelectOption } from "../Select";
-import styles from "./custom-select-value.module.scss"
+import type { SelectOption } from "@components/Select";
+import { classnames } from "@lib/classnames";
+
+import styles from "./custom-select-value.module.scss";
 
 type CustomSelectValueProps = {
   value?: SelectOption["label"];

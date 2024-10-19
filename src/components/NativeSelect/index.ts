@@ -1,1 +1,3 @@
-export { NativeSelect } from "./native-select.component";
+export {
+  NativeSelect
+} from "./native-select.component";

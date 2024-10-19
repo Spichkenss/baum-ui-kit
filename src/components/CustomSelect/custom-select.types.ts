@@ -1,4 +1,3 @@
-
 export type NativeSelectChangeHandler
   = React.ChangeEventHandler<HTMLSelectElement>;
 
