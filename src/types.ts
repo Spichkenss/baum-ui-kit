@@ -1,3 +1,5 @@
+import type { FC, PropsWithChildren } from "react";
+
 export type WithAfterAndBeforeElements = {
   before?: React.ReactNode;
   after?: React.ReactNode;
@@ -34,3 +36,6 @@ export type Breakpoint =
   | "2xl"
   | "3xl"
   | "4xl";
+
+export type ContextProvider<TProps extends object> =
+  FC<PropsWithChildren<TProps>>;

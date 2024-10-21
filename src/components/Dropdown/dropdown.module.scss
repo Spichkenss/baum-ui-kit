@@ -1,0 +1,58 @@
+.Dropdown__Trigger {
+  background: none;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.Dropdown__Menu {
+  --dropdown-menu-outer-spacing: 10px;
+  --dropdown-menu-inner-spacing: 4px;
+  --dropdown-menu-radius: 8px;
+  --dropdown-menu-options-max-height: 160px;
+
+  font: var(--font-body-500);
+  color: var(--palette-text-primary);
+  background: var(--palette-grey-primary);
+  border-radius: var(--dropdown-menu-radius);
+  position: absolute;
+  top: calc(100%);
+  left: 0;
+  margin-top: var(--dropdown-menu-outer-spacing);
+  overflow: clip;
+  padding: var(--dropdown-menu-inner-spacing);
+  max-height: var(--dropdown-menu-options-max-height);
+  overflow-y: auto;
+}
+
+.Dropdown__Item {
+  --dropdown-item-inner-spacing: 4px 8px;
+  --dropdown-item-radius: 8px;
+  --dropdown-item-background-hover: var(--palette-primary-opacity);
+  --dropdown-item-background-focused: var(--palette-primary-active);
+
+  color: var(--palette-text-primary);
+  padding: var(--dropdown-item-inner-spacing);
+  border-radius: var(--dropdown-item-radius);
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+
+  &:hover {
+    background: var(--dropdown-item-background-hover);
+    cursor: pointer;
+  }
+
+  &.Focused {
+    background: var(--dropdown-item-background-focused);
+  }
+
+}
+
+.Dropdown__Async-Item {
+
+}
+
+.Dropdown__Submenu {
+
+}

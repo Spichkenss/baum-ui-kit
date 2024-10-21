@@ -1,0 +1,7 @@
+.Primitive-Trigger {
+  user-select: none;
+
+  &[data-clickable="false"] {
+    pointer-events: none;
+  }
+}
