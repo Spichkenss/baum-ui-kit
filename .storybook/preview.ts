@@ -13,7 +13,7 @@ const preview: Preview = {
         { name: "Dark", value: "#1A1B1EFF" },
         { name: "Light", value: "#FFF" },
       ],
-      default: "Light",
+      default: "Dark",
     },
     controls: {
       matchers: {
