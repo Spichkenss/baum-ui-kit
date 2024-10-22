@@ -7,7 +7,7 @@ export const getClassesFromCustomStyle = (
   const styles: CSSProperties = {};
 
   Object.entries(style || {}).forEach(([key, value]) => {
-    if (value.startsWith("_")) {
+    if (typeof value === "string" && value.startsWith("_")) {
       moduleClasses.push(value);
     } else {
       styles[key as keyof CSSProperties] = value;

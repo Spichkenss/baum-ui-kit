@@ -8,3 +8,5 @@ export * from "./Flex";
 export * from "./Switch";
 export * from "./Dropdown";
 export * from "./Slot";
+export * from "./Divider";
+export * from "./Checkbox";

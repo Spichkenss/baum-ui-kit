@@ -1,0 +1,104 @@
+@use "/src/styles";
+
+.check {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 5px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.line {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 8px;
+  height: 2px;
+  background: white;
+}
+
+.Checkbox__Root {
+  --checkbox-spacing: var(--spacing_sm);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--checkbox-spacing);
+}
+
+.Checkbox__Thumb {
+  --checkbox-thumb-size-sm: 20px;
+  --checkbox-thumb-size-md: 24px;
+  --checkbox-thumb-radius-sm: 6px;
+  --checkbox-thumb-radius-md: 8px;
+
+  position: relative;
+  cursor: pointer;
+  width: var(--checkbox-thumb-size);
+  height: var(--checkbox-thumb-size);
+  background: transparent;
+  border-radius: var(--checkbox-thumb-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include styles.inner-border(var(--palette-neutral-200));
+}
+
+.Checkbox__Thumb.Size-sm {
+  --checkbox-thumb-size: var(--checkbox-thumb-size-sm);
+  --checkbox-thumb-radius: var(--checkbox-thumb-radius-sm);
+}
+
+.Checkbox__Thumb.Size-md {
+  --checkbox-thumb-size: var(--checkbox-thumb-size-md);
+  --checkbox-thumb-radius: var(--checkbox-thumb-radius-md);
+}
+
+.Host:checked ~ .Checkbox__Thumb {
+  background: var(--palette-primary);
+
+  @include styles.inner-border(var(--palette-primary));
+}
+
+.Host:checked ~ .Checkbox__Thumb:hover {
+  background: var(--palette-primary-hover);
+
+  @include styles.inner-border(var(--palette-primary-hover));
+}
+
+.Host:checked ~ .Checkbox__Thumb:not(.Indeterminate)::after {
+  @extend .check;
+}
+
+.Host:checked ~ .Checkbox__Thumb.Indeterminate::after {
+  @extend .line;
+}
+
+.Host:disabled ~ .Checkbox__Thumb {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.Host:disabled:checked ~ .Checkbox__Thumb {
+  background: var(--palette-action-100);
+
+  @include styles.inner-border(var(--palette-action-200));
+}
+
+.Host:focus-within:checked ~ .Checkbox__Thumb {
+  box-shadow: 0 0 0 4px var(--palette-primary-opacity);
+}
+
+.Checkbox__Label {
+  font: var(--font-body-500);
+  color: var(--palette-text-primary);
+}
+
+.Host:disabled ~ .Checkbox__Label {
+  color: var(--palette-text-secondary);
+}
+
+

@@ -1,0 +1,13 @@
+.Divider__Root {
+  --divider-color: var(--palette-background-secondary);
+
+  background: var(--divider-color);
+}
+
+.Divider__Root:is(.Vertical) {
+  width: 2px;
+}
+
+.Divider__Root:is(.Horizontal) {
+  height: 2px;
+}
