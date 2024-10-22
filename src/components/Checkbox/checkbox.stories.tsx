@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Checkbox } from "./checkbox.component";
 import { disabledArg } from "@lib/storybook/storybook.consts";
+import { Flex } from "@components/Flex";
 
 const meta = {
   title: "UI/Checkbox",
@@ -86,4 +87,19 @@ export const Disabled: Story = {
     label: "Label",
     disabled: true,
   }
+}
+
+export const Size: Story = {
+  render: () => {
+    return (
+      <Flex.Container
+        direction={"column"}
+        style={theme => ({ gap: theme.spacing.xl })}
+      >
+        <Checkbox size={"sm"} label={"small"}/>
+        <Checkbox size={"md"} label={"medium"}/>
+      </Flex.Container>
+    )
+  }
+
 }

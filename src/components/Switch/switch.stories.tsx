@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Switch } from "./switch.component";
-import { useState } from "react";
 import { disabledArg } from "@lib/storybook/storybook.consts";
+
+import { Switch } from "./switch.component";
 
 const meta = {
   title: "UI/Switch",
@@ -39,23 +39,25 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Uncontrolled: Story = {
+export const Default: Story = {
   args: {}
 }
 
-export const Controlled = () => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  return (
-    <Switch
-      checked={isChecked}
-      onChange={(event) => setIsChecked(event.currentTarget.checked)}
-    />
-  )
+export const Checked: Story = {
+  args: {
+    defaultChecked: true,
+  }
 }
 
-export const Label: Story = {
+export const WithLabel: Story = {
   args: {
     label: "Label"
+  }
+}
+
+export const Disabled: Story = {
+  args: {
+    label: "Label",
+    disabled: true,
   }
 }
