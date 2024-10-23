@@ -13,3 +13,4 @@ export * from "./Checkbox";
 export * from "./Badge";
 export * from "./Accordion";
 export * from "./Spacing";
+export * from "./Spinner";
