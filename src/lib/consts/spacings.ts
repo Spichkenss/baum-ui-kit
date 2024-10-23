@@ -2,7 +2,7 @@ import type { Breakpoint } from "@global-types";
 
 import styles from "@styles/spacings.module.scss";
 
-type Spacing = Breakpoint;
+export type Spacing = Breakpoint;
 
 export const spacings = {
   "2xs": styles["spacing-2xs"],
