@@ -1,10 +1,11 @@
 import { forwardRef } from "react";
+
 import { useControllableState } from "@hooks/useControllableState";
 import { VisuallyHidden } from "@components/VisuallyHidden";
-
-import styles from "./switch.module.scss";
 import { classnames } from "@lib/classnames";
 import { Conditional } from "@components/Conditional";
+
+import styles from "./switch.module.scss";
 
 export type SwitchProps =
   & React.ComponentPropsWithoutRef<"input">

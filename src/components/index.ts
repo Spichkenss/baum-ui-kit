@@ -10,3 +10,5 @@ export * from "./Dropdown";
 export * from "./Slot";
 export * from "./Divider";
 export * from "./Checkbox";
+export * from "./Badge";
+export * from "./Accordion";

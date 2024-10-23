@@ -4,7 +4,7 @@ type UseControllableStateChangeCallback<T> = (newState: T) => void;
 
 type UseControllableStateProps<T> = {
   value?: T;
-  defaultValue: T;
+  defaultValue: T | (() => T);
   onChange?: UseControllableStateChangeCallback<T>;
 };
 
@@ -16,7 +16,11 @@ export const useControllableState = <T>({
   defaultValue,
   onChange
 }: UseControllableStateProps<T>): UseControllableStateReturnType<T> => {
-  const [internalState, setInternalState] = useState<T>(defaultValue);
+  const [internalState, setInternalState] = useState<T>(
+    () => typeof defaultValue === "function"
+      ? (defaultValue as () => T)()
+      : defaultValue
+  );
 
   const isControlledOutside = value !== undefined;
 

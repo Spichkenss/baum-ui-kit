@@ -1,0 +1,13 @@
+.Accordion-Content__Root {
+  display: none;
+  overflow: hidden;
+  height: 0px;
+  opacity: 0;
+}
+
+.Accordion-Content__Root.Opened {
+  display: flex;
+  overflow: visible;
+  height: unset;
+  opacity: 1;
+}
