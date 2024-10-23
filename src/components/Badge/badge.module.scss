@@ -1,0 +1,36 @@
+.Badge__Root {
+  --badge-inner-spacing: 2px 12px;
+  --badge-content-spacing: var(--spacing_xs);
+
+  border-radius: 100vw;
+  font: var(--font-body-400-bold);
+  padding: var(--badge-inner-spacing);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Badge__Root.Success {
+  background: var(--palette-success-50);
+  color: var(--palette-success-400);
+}
+
+.Badge__Root.Warning {
+  background: var(--palette-warning-50);
+  color: var(--palette-warning-400);
+}
+
+.Badge__Root.Error {
+  background: var(--palette-alert-50);
+  color: var(--palette-negative-500);
+}
+
+.Badge__Root.Neutral {
+  background: var(--palette-neutral-100);
+  color: var(--palette-text-secondary);
+}
+
+.Badge__Root.Info {
+  background: var(--palette-info-50);
+  color: var(--palette-info-400);
+}

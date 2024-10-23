@@ -1,0 +1,1 @@
+export { type BadgeProps, Badge } from "./badge.component";

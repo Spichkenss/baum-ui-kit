@@ -1,0 +1,10 @@
+.Before-After-Container__Root {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing_sm);
+}
+
+.Pseudo-Element {
+  color: inherit;
+}
