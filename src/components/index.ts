@@ -28,3 +28,31 @@ export * from "./GridLayout";
 export * from "./Portal";
 export * from "./Modal";
 export * from "./List";
+
+/*
+* TODO:
+ * Icons
+ * Input type password eye
+ * Dropzone
+ * File upload button
+ * Multiselect
+ * Radio
+ * Radio group
+ * Popover - всплывающее окно по клику
+ * Tooltip
+ * IconButton
+ * Pagination
+ * Info block
+ * Snackbar (Toast)
+ * Round progress
+ * Card
+ * Typography
+ * Calendar
+ * Locale provider
+ * Table
+ * Indicator
+ * Tabs
+ * Global loader provider
+ * Skeleton
+ * Progress bar
+*/
