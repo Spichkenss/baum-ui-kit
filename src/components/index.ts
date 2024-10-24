@@ -25,3 +25,4 @@ export * from "./Spinner";
 export * from "./Panel";
 export * from "./SplitView";
 export * from "./GridLayout";
+export * from "./Portal";
