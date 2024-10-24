@@ -1,0 +1,8 @@
+.Panel-Root__Root {
+  --panel-inner-spacing: var(--spacing_2xl);
+  --panel-radius: 16px;
+
+  background: var(--palette-background-secondary);
+  padding: var(--panel-inner-spacing);
+  border-radius: var(--panel-radius);
+}
