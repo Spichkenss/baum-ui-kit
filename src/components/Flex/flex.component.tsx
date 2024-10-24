@@ -3,7 +3,6 @@ import { withThemedStyle } from "@hoc/withThemedStyle";
 import { FlexContainer } from "./flex-container.component";
 import { FlexItem } from "./flex-item.component";
 
-
 export const Flex = Object.assign(
   {},
   {

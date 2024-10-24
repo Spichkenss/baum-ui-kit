@@ -1,0 +1,8 @@
+.Grid-Layout__Root {
+
+}
+
+.Grid-Layout__Root > * {
+  // Из всей ширины контейнера отнимаем сумму ширин гапов между элементами, затем делим на количество колонок
+  flex-basis: calc((100% - (var(--grid-layout-columns-count) - 1) * var(--spacing-size)) / var(--grid-layout-columns-count));
+}

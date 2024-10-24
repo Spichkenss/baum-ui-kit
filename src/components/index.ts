@@ -16,3 +16,4 @@ export * from "./Spacing";
 export * from "./Spinner";
 export * from "./Panel";
 export * from "./SplitView";
+export * from "./GridLayout";
