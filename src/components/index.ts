@@ -26,3 +26,5 @@ export * from "./Panel";
 export * from "./SplitView";
 export * from "./GridLayout";
 export * from "./Portal";
+export * from "./Modal";
+export * from "./List";

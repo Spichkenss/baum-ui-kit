@@ -1,6 +1,5 @@
 import { ClickableOutside } from "@components/ClickableOutside";
 import { Portal } from "@components/Portal";
-import { useControllableState } from "@hooks/useControllableState";
 
 import styles from "./modal.module.scss";
 import { useKeyDown } from "@hooks/useKeyDown";
@@ -17,6 +16,8 @@ export const Modal = ({
   children
 }: ModalProps) => {
   useKeyDown("Escape", onClose);
+
+  // TODO: добавить хук для отключения скрола страницы при открытой модалке
 
   if (!isOpen) return null;
 
