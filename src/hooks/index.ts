@@ -13,3 +13,4 @@ export { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 export { useOnClickOutside } from "./useOnClickOutside";
 export { useBoolean } from "./useBoolean";
 export { useControllableState } from "./useControllableState";
+export { useCurrentBreakpoint } from "./useCurrentBreakpoint";
