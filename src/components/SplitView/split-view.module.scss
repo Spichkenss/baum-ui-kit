@@ -1,0 +1,26 @@
+.Split-View__Root {
+  --split-view-separator-color: var(--palette-neutral-100);
+  --split-view-separator-size: 1px;
+
+  display: flex;
+}
+
+.Split-View__Root > * {
+  flex: 1;
+}
+
+.Split-View__Root.Vertical {
+  flex-direction: column;
+}
+
+.Split-View__Root.Horizontal {
+  flex-direction: row;
+}
+
+.Split-View__Root.Separated.Vertical > *:not(:last-child) {
+  border-bottom: var(--split-view-separator-size) solid var(--split-view-separator-color);
+}
+
+.Split-View__Root.Separated.Horizontal > *:not(:first-child) {
+  border-left: var(--split-view-separator-size) solid var(--split-view-separator-color);
+}

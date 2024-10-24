@@ -15,3 +15,4 @@ export * from "./Accordion";
 export * from "./Spacing";
 export * from "./Spinner";
 export * from "./Panel";
+export * from "./SplitView";
